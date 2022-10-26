@@ -1,0 +1,26 @@
+.social {
+  display: none;
+}
+
+.socialMenu {
+  display: block;
+  align-self: end;
+  margin: 32px 5px 22px 0;
+  background-color: black; /* sacar esto cuando solucionemos el tema del fill de los iconos*/
+}
+
+.socialMenu a {
+  margin-left: 17px;
+}
+
+@media screen and (min-width: 768px) {
+  .social {
+    display: flex;
+    align-items: center;
+  }
+
+  .social a {
+    margin-right: 30px;
+    max-height: 27px;
+  }
+}

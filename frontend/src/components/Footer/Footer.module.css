@@ -1,0 +1,19 @@
+.footerContainer {
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  padding: 21px 19px;
+  height: 58px;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  font-size: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .footerContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0 17px 21px;
+    align-items: center;
+  }
+}

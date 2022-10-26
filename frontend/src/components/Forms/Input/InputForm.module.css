@@ -1,0 +1,54 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 81px; /* 62px input normal + 19px para error*/
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.label {
+  margin-bottom: 8px;
+}
+
+.inputContainer2 {
+  position: relative;
+}
+
+.input {
+  padding: 0 18px;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  margin-bottom: 5px;
+  width: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+.msgError {
+  display: inline-block;
+  text-align: end;
+  color: var(--red-color);
+  padding: 0 0.5rem;
+}
+
+.iconVisibility {
+  position: absolute;
+  bottom: 11px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 768px) {
+  .inputContainer {
+    width: 346px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .inputContainer {
+    width: 448px;
+  }
+}
