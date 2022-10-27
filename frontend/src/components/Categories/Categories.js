@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from './Categories.module.css';
 
-const Categorias = () => {
+const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -35,4 +35,4 @@ const Categorias = () => {
   );
 };
 
-export default Categorias;
+export default Categories;

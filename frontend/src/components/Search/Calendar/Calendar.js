@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import DatePicker from 'react-datepicker';
+import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
+import es from 'date-fns/locale/es';
 
 const Calendar = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+  // setDefaultLocale('es');
+  registerLocale('es', es);
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -30,13 +33,11 @@ const Calendar = () => {
       minDate={new Date()}
       monthsShown={width < 768 ? 1 : 2}
       dateFormat="dd/MM/yyyy"
-      placeholderText="Check in - Check out"
+      placeholderText="Fecha de inicio - Fecha de finalización"
       onChange={(update) => {
         setDateRange(update);
       }}
-
-      //   locale="es-ES"
-      //   locale={'es'}
+      locale="es"
       //   isClearable={true}
     />
   );
