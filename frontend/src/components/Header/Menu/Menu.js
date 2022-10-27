@@ -42,7 +42,20 @@ const Menu = () => {
               </Link>
             </div>
           ) : (
-            <Avatar />
+            <>
+              <button
+                className={style.closeMenu}
+                onClick={() => {
+                  localStorage.removeItem('login');
+                }}
+                aria-label="Cerrar sesión"
+              >
+                <span title="Cerrar sesión" aria-hidden="true">
+                  X
+                </span>
+              </button>
+              <Avatar />
+            </>
           )}
         </div>
       </div>

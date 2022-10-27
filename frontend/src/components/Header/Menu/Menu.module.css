@@ -145,10 +145,24 @@
 @media (min-width: 768px) {
   .containerRigth {
     display: block;
+    position: relative;
   }
 
   .btnGroup {
     display: flex;
     gap: 1rem;
+  }
+
+  .closeMenu {
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    margin: 0;
+    color: var(--thirth-color);
+  }
+
+  .closeMenu span {
+    font-size: 17px;
+    font-weight: 700;
   }
 }
