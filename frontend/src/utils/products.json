@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "img": "https://images.unsplash.com/photo-1612320743558-020669ff20e8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80",
+    "category": "Hotel",
+    "title": "Grand Brizo Hotel",
+    "location": "La Plata",
+    "description": "El Grand Brizo La Plata está situado en La Plata y alberga un centro de fitness. El alojamiento cuenta con recepción 24 horas, restaurante y terraza. El hotel cuenta con pileta cubierta y servicio de conserjería. \n Todas las habitaciones del hotel están equipadas con TV de pantalla plana. El baño privado incluye bañera. Las habitaciones del Grand Brizo La Plata cuentan con aire acondicionado y escritorio."
+  },
+
+  {
+    "id": 2,
+    "img": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
+    "category": "Hotel",
+    "title": "Hermitage Hotel",
+    "location": "A 415m del centro",
+    "description": "En el corazón de San Telmo, disfruta de un albergue inspirado en las pasiones de Buenos Aires. con 2 impresionantes piscinas, una en la terraza y otra al aire libre; habitaciones privadas"
+  },
+  {
+    "id": 3,
+    "img": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+    "category": "Cabaña",
+    "title": "Cabaña De Colores",
+    "location": "Bariloche",
+    "description": "De Colores está localizado en San Carlos de Bariloche. Cuenta con piscina climatizada y wi-fi gratis en zonas comunes, además de servicio de masajes. Entre las comodidades se destacan estacionamiento gratis y información turística. Por un cargo, la propiedad cuenta con servicio de traslado en los alrededores y servicio de lavandería."
+  },
+  {
+    "id": 4,
+    "img": "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "category": "Cabaña",
+    "title": "Cabaña Las Marias",
+    "location": "Córdoba",
+    "description": "En el corazón de Córdoba, disfruta de un albergue cerca de las montañas. Un dormitorio matrimonial. Cocina/comedor y estar c/camas de 1 plaza. Cochera cubierta. Amplia galería con parrilla."
+  },
+  {
+    "id": 5,
+    "img": "https://images.unsplash.com/photo-1569152811536-fb47aced8409?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80",
+    "category": "Apartamento",
+    "title": "Apartamento",
+    "location": "A 940m del centro",
+    "description": "Amplio apartamento con excelente cocina amoblada. Pisos de madera. Ubicado en excelente zona con grandes espacios verdes."
+  },
+
+  {
+    "id": 6,
+    "img": "https://images.unsplash.com/photo-1630699144867-37acec97df5a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "category": "Apartamento",
+    "title": "Apartamento 2 ambientes",
+    "location": "A 415m del centro",
+    "description": "A estrenar. Amplio apartamento 2 ambientes. Cuenta con alarma y excelente sistema de ventilación. Compuesto pon un dormitorio con placard. Excelente terminación con una construcción moderna y sólida."
+  },
+  {
+    "id": 7,
+    "img": "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=992&q=80",
+    "category": "Casas",
+    "title": "Casa ",
+    "location": "Greenwood",
+    "description": "Excelente propiedad ubicada en exclusivo barrio privado. Cuenta con excelente seguridad en todas las aberturas, diseño moderno. Cochera. Parque al frente y atrás con piscina"
+  },
+  {
+    "id": 8,
+    "img": "https://images.unsplash.com/photo-1565182999561-18d7dc61c393?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "category": "Casas",
+    "title": "Casa familiar",
+    "location": "A 1500m del centro",
+    "description": "Casa luminosa, con cálidos ambientes. 2 plantas, 4 habitaciones, 2 baños, parque y piscina."
+  }
+]
