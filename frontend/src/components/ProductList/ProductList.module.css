@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  max-width: 394px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 21px;
+  /* padding: 36px 12px 62px; */
+  padding: 0 12px;
+  margin: auto;
+}
+
+.recommendations {
+  color: var(--white-color);
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 735px;
+  }
+}
+@media (min-width: 1333px) {
+  .container {
+    max-width: 1324px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .recommendations {
+    width: 100%;
+  }
+}

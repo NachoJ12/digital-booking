@@ -19,6 +19,7 @@ La navegación incluye:
 - Interfaz realizada con ReactJS - Create React App
 - Ruteo con React Router Dom
 - Estilos con CSS
+- Iconos con FontAwesome
   - react: "18.2.0"
   - react-datepicker: "^4.8.0",
   - react-dom: "18.2.0"
