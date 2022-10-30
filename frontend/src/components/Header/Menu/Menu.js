@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import hamburguer from '../../../assets/menu.svg';
+import { userContext } from '../../../context/UserContext';
 
 import Avatar from '../Avatar/Avatar';
 import style from './Menu.module.css';
 
 const Menu = () => {
-  let logeado = Boolean(localStorage.getItem('login'));
-  console.log(logeado);
+  const userContextResult = useContext(userContext);
+
+  const loggedIn = userContextResult.userLogin;
 
   const toggleMenu = () => {
     const overlay = document.querySelector('.overlay');
@@ -17,6 +19,7 @@ const Menu = () => {
 
     overlay.classList.toggle('visible');
   };
+
   return (
     <>
       <div>
@@ -32,7 +35,7 @@ const Menu = () => {
         </button>
         {/* tablet-desktop */}
         <div className={style.containerRigth}>
-          {!logeado ? (
+          {!loggedIn ? (
             <div className={style.btnGroup}>
               <Link to="/signup" className="btn btn1">
                 Crear cuenta
@@ -46,7 +49,7 @@ const Menu = () => {
               <button
                 className={style.closeMenu}
                 onClick={() => {
-                  localStorage.removeItem('login');
+                  userContextResult.logoutUser();
                 }}
                 aria-label="Cerrar sesión"
               >

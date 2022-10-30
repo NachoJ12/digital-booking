@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../context/UserContext';
 import Avatar from '../Header/Avatar/Avatar';
 import style from '../Header/Menu/Menu.module.css';
 import Social from '../Social/Social';
 
 const SideBar = () => {
-  let logeado = Boolean(localStorage.getItem('login'));
+  const userContextResult = useContext(userContext);
+
+  const loggedIn = userContextResult.userLogin;
 
   const [width, setWidth] = useState(window.innerWidth);
 
@@ -37,7 +40,7 @@ const SideBar = () => {
       {/* Despliegue de sidebar */}
       <div className={style.menu} id="menu">
         {/* Menu top */}
-        <div className={`${style.menuTop} ${!logeado ? '' : style.loggedIn}`}>
+        <div className={`${style.menuTop} ${!loggedIn ? '' : style.loggedIn}`}>
           <button
             className={style.closeMenu}
             onClick={toggleMenu}
@@ -47,7 +50,7 @@ const SideBar = () => {
               X
             </span>
           </button>
-          {!logeado ? (
+          {!loggedIn ? (
             <>
               <p className={style.menuTitle}>menú</p>{' '}
             </>
@@ -57,7 +60,7 @@ const SideBar = () => {
         </div>
         {/* Menu Body */}
         <div className={style.menuBody}>
-          {!logeado && (
+          {!loggedIn && (
             <ul>
               <li>
                 <Link to="/signup">Crear cuenta</Link>
@@ -71,17 +74,22 @@ const SideBar = () => {
         </div>
         {/* Menu Fotter */}
         <div className={style.menuFooter}>
-          <p>
-            ¿Deseas{' '}
-            <Link
-              className={style.signOff}
-              onClick={() => localStorage.removeItem('login')}
-            >
-              cerrar sesión
-            </Link>
-            ?{/* Hacer link para cerrar sesión */}
-          </p>
-          <span className={style.lineOrange}></span>
+          {loggedIn && (
+            <>
+              <p>
+                ¿Deseas{' '}
+                <Link
+                  className={style.signOff}
+                  onClick={() => userContextResult.logoutUser()}
+                >
+                  cerrar sesión
+                </Link>
+                ?
+              </p>
+              <span className={style.lineOrange}></span>
+            </>
+          )}
+
           <Social activeWidth={width} />
         </div>
       </div>

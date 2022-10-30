@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { userContext } from '../../../context/UserContext';
 import style from './Avatar.module.css';
 
-const name = 'Roberto';
-const lastname = 'Rodriguez';
-
 const Avatar = () => {
+  const userContextResult = useContext(userContext);
+
+  const name = userContextResult.userInfo.name;
+  const lastname = userContextResult.userInfo.lastName;
+
   return (
     <div className={style.container}>
       <div className={style.initialsContainer}>
