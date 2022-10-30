@@ -6,24 +6,26 @@ import Login from './components/Forms/Login/Login';
 import SideBar from './components/SideBar/SideBar';
 import SignUp from './components/Forms/SignUp/SignUp';
 import Home from './components/Home/Home';
+import UserContextProvider from './context/UserContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="container">
-        <Header />
-        <div className="overlay"></div>
-        <SideBar />
+      <UserContextProvider>
+        <div className="container">
+          <Header />
+          <div className="overlay"></div>
+          <SideBar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* Search - Sacar de esta ruta, ahora solo para visualizarlo */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-
-        <Footer />
-      </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* Search - Sacar de esta ruta, ahora solo para visualizarlo */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+          </Routes>
+        </div>
+      </UserContextProvider>
+      <Footer />
     </BrowserRouter>
   );
 }

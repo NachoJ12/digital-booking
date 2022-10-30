@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Input from '../Input/Input';
 import style from '../Form.module.css';
 import users from '../../../utils/users.json';
 import { Link, useNavigate } from 'react-router-dom';
+import { userContext } from '../../../context/UserContext';
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -10,15 +11,9 @@ const Login = () => {
     login_password: '',
   });
   // console.log(user);
+  const userContextResult = useContext(userContext);
 
   const navigate = useNavigate();
-
-  const [userLogin, setUserLogin] = useState(localStorage.getItem('login'));
-
-  const loginUser = () => {
-    setUserLogin(true);
-    localStorage.setItem('login', true);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +38,7 @@ const Login = () => {
           users[0].email === data.email &&
           users[0].password === data.password
         ) {
-          loginUser();
+          userContextResult.loginUser(users[0]);
           navigate('/');
         } else {
           console.log('false');
@@ -89,13 +84,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/* 
-
-Login: Crear un formulario de inicio de sesión que contenga los siguientes inputs y labels:
-
-Correo electrónico (de type=”email”)
-Contraseña (de type=”Password”)
-Además debe tener un botón que debe decir ingresar.
-Debajo del botón debe haber un texto que redireccione al registro.
-*/
