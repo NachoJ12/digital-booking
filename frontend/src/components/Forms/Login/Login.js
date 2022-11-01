@@ -6,45 +6,54 @@ import { Link, useNavigate } from 'react-router-dom';
 import { userContext } from '../../../context/UserContext';
 
 const Login = () => {
-  const [user, setUser] = useState({
-    login_email: '',
-    login_password: '',
-  });
-  // console.log(user);
+  const [email, setEmail] = useState({ value: '', valid: null });
+  const [password, setPassword] = useState({ value: '', valid: null });
+  const [isFormValid, setIsFormValid] = useState(null);
+
   const userContextResult = useContext(userContext);
 
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+  const regularExpressions = {
+    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    password: /^.{7,20}$/, // 7 to 20 digits.
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsFormValid(true);
 
-    if (user.login_email === '') {
-      return;
+    if (email.value === '') {
+      setEmail((prevState) => {
+        return { ...prevState, valid: 'false' };
+      });
+    }
+    if (password.value === '') {
+      setPassword((prevState) => {
+        return { ...prevState, valid: 'false' };
+      });
     }
 
-    const data = {
-      email: user.login_email,
-      password: user.login_password,
-    };
-    new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(users);
-        if (
-          users[0].email === data.email &&
-          users[0].password === data.password
-        ) {
-          userContextResult.loginUser(users[0]);
-          navigate('/');
-        } else {
-          console.log('false');
-        }
-      }, 500);
-    });
+    if (email.valid === 'true' && password.valid === 'true') {
+      const data = {
+        email: email.value,
+        password: password.value,
+      };
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(users);
+          if (
+            users[0].email === data.email &&
+            users[0].password === data.password
+          ) {
+            userContextResult.loginUser(users[0]);
+            navigate('/');
+          } else {
+            setIsFormValid(false);
+          }
+        }, 500);
+      });
+    }
   };
 
   return (
@@ -53,21 +62,31 @@ const Login = () => {
         <h1 className={style.titleForm}>Iniciar Sesión</h1>
         <div>
           <Input
+            state={email}
+            changeState={setEmail}
             label="Correo electrónico"
             type="email"
-            id="login_email"
-            error="Correo electrónico incorrecto"
-            onChange={handleChange}
-            isValid={false}
+            id="email"
+            name="email"
+            error="Ingrese un correo electronico valido"
+            regex={regularExpressions.email}
           />
           <Input
+            state={password}
+            changeState={setPassword}
             label="Contraseña"
             type="password"
-            id="login_password"
-            error="Contraseña incorrecta"
-            onChange={handleChange}
-            isValid={true}
+            id="password"
+            name="password"
+            error="La contraseña debe tener entre 6 y 15 caracteres"
+            regex={regularExpressions.password}
           />
+          {isFormValid === false && (
+            <p className={style.msgErrorInvalidForm}>
+              Por favor vuelva a intentarlo, sus credenciales son inválidas.
+            </p>
+          )}
+
           <button type="submit" className={`btn btn2 ${style.submitButton}`}>
             Ingresar
           </button>

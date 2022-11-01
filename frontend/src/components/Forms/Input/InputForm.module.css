@@ -10,6 +10,7 @@
 
 .label {
   margin-bottom: 8px;
+  width: fit-content;
 }
 
 .inputContainer2 {
@@ -26,6 +27,20 @@
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
 }
 
+input:focus {
+  outline: none;
+  background-color: var(--white-color);
+}
+
+.inputError {
+  border: 1px solid red;
+  background: #ffe1e1;
+}
+
+.inputError:focus {
+  border: none;
+}
+
 .msgError {
   display: inline-block;
   text-align: end;
@@ -35,7 +50,7 @@
 
 .iconVisibility {
   position: absolute;
-  bottom: 11px;
+  bottom: 12px;
   right: 12px;
   width: 24px;
   height: 24px;

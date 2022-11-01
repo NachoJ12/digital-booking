@@ -1,38 +1,99 @@
-import React from 'react';
+import React, { useState } from 'react';
 import style from './InputForm.module.css';
-import visibilityIcon from '../../../assets/visibilityOff.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-const Input = ({ label, type, id, error, onChange, isValid }) => {
+const Input = ({
+  state,
+  changeState,
+  label,
+  type,
+  id,
+  name,
+  error,
+  placeholder,
+  regex,
+  executeFunction,
+}) => {
+  const [viewPassword, setViewPassword] = useState(false);
+  const [changeType, setChangeType] = useState(null);
+
+  const toggleViewPassword = () => {
+    !viewPassword ? setViewPassword(true) : setViewPassword(false);
+    !changeType === 'password'
+      ? setChangeType('text')
+      : setChangeType('password');
+  };
+
+  const onChange = (e) => {
+    changeState({ ...state, value: e.target.value });
+  };
+
+  const validation = () => {
+    if (regex) {
+      if (regex.test(state.value)) {
+        changeState({ ...state, valid: 'true' });
+      } else {
+        changeState({ ...state, valid: 'false' });
+      }
+    }
+
+    if (executeFunction) {
+      executeFunction();
+    }
+  };
+
   return (
     <div className={style.inputContainer}>
-      <label className={style.label} htmlFor={id}>
+      <label className={style.label} htmlFor={name}>
         {label}
       </label>
       <div className={style.inputContainer2}>
         <input
-          className={style.input}
-          type={type}
-          id={id}
-          name={id}
+          className={`${style.input} ${
+            state.valid === 'false' ? style.inputError : ''
+          } `}
+          type={id !== 'password' ? type : viewPassword ? 'text' : 'password'}
+          id={name}
+          name={name}
+          value={state.value}
           onChange={onChange}
-          // visibility
+          // onKeyUp={validation}
+          placeholder={placeholder}
+          onBlur={validation}
+          valid={state.valid}
         />
-        {(id === 'login_password' || id === 'signup_password') && (
+        {id === 'password' && state.value.length > 0 && (
           <span
             className={style.iconVisibility}
             id="iconVisibility"
             data-activo="false"
           >
-            <img
-              src={visibilityIcon}
-              width="24px"
-              height="24px"
-              alt="visibility password on/off"
-            />
+            {viewPassword ? (
+              <FontAwesomeIcon
+                onClick={toggleViewPassword}
+                icon={faEye}
+                fontSize="24px"
+                width="24px"
+                style={{ userSelect: 'none' }}
+                title="Ocultar contraseña"
+              />
+            ) : (
+              <FontAwesomeIcon
+                onClick={toggleViewPassword}
+                icon={faEyeSlash}
+                fontSize="24px"
+                width="24px"
+                style={{ userSelect: 'none' }}
+                title="Ver contraseña"
+              />
+            )}
           </span>
         )}
       </div>
-      {!isValid && <span className={style.msgError}>{error}</span>}
+      {state.valid === 'false' && (
+        <span className={style.msgError}>{error}</span>
+      )}
     </div>
   );
 };
