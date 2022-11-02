@@ -1,10 +1,12 @@
-production_deployment:
+upload to s3:
   stage: deploy
   image: python:latest
+  
   script:
     - pip install awscli
+    - aws configure set region us-east-2
     - aws s3 rm --recursive s3://$AWS_BUCKET/
-    - aws s3 cp ./site s3://$AWS_BUCKET/ --recursive
+    - aws s3 cp ./ s3://$AWS_BUCKET/ --recursive
   only:
     - master
 
