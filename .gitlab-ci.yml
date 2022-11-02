@@ -7,6 +7,4 @@ upload to s3:
     - aws configure set region us-east-2
     - aws s3 rm --recursive s3://$AWS_BUCKET/
     - aws s3 cp ./ s3://$AWS_BUCKET/ --recursive
-  only:
-    - master
-
+  
