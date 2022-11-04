@@ -31,6 +31,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style: none;
+}
+
 /* overlay for when the menu is opened*/
 body .overlay {
   background-color: rgba(0, 0, 0, 0.75);

@@ -72,7 +72,7 @@
 }
 
 .scoreNumber {
-  width: fit-content;
+  min-width: fit-content;
   text-align: center;
   width: 34px;
   background: var(--secondary-color);

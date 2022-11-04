@@ -12,7 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 
-const Product = ({ imgUrl, category, title, description, location }) => {
+const Product = ({ id, imgUrl, category, title, description, location }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleAddFavorite = () => {
@@ -59,7 +59,10 @@ const Product = ({ imgUrl, category, title, description, location }) => {
         </div>
 
         <p className={style.productDescription}>{description}</p>
-        <button className={`btn btn2 w-100`}>Ver detalle</button>
+        {/* <button className={`btn btn2 w-100`}>Ver detalle</button> */}
+        <Link to={`/products/${id}`} className={`btn btn2 w-100`}>
+          Ver detalle
+        </Link>
       </div>
     </div>
   );
