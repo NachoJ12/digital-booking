@@ -19,11 +19,11 @@ const Categories = () => {
           <div className={style.categoryCard} key={category.id}>
             <img
               className={style.categoryImage}
-              src={category.urlImage}
-              alt={category.title}
+              src={category.url}
+              alt={category.name}
             />
             <div className={style.containerDescription}>
-              <p>{category.title}</p>
+              <p>{category.name}</p>
               <p className={style.categoryDescription}>
                 {category.description}
               </p>
