@@ -8,18 +8,18 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
+    private String name;
     private String description;
-    private String urlImage;
+    private String url;
 
     public Category() {
     }
 
-    public Category(Integer id, String title, String description, String urlImage) {
+    public Category(Integer id, String name, String description, String url) {
         this.id = id;
-        this.title = title;
+        this.name = name;
         this.description = description;
-        this.urlImage = urlImage;
+        this.url = url;
     }
 
     public Integer getId() {
@@ -30,12 +30,12 @@ public class Category {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -46,11 +46,11 @@ public class Category {
         this.description = description;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
