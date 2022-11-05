@@ -1,0 +1,6 @@
+.container {
+  padding: 19px 12px 62px;
+  /* margin: auto; */
+  background: var(--secondary-color);
+  padding-bottom: 25px;
+}
