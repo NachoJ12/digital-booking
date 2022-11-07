@@ -17,7 +17,7 @@
 }
 
 .modalContainer {
-  width: 500px;
+  width: 647px;
   min-height: 100px;
   background-color: var(--white-color);
   position: relative;
@@ -33,7 +33,7 @@
 .modalContainer img {
   width: 100%;
   vertical-align: top;
-  border-radius: 3px;
+  border-radius: 8px;
 }
 
 .modalHeader {
@@ -63,6 +63,7 @@
   transition: 0.3s ease all;
   border-radius: 5px;
   color: var(--white-color);
+  z-index: 4;
 }
 
 .closeButton:hover {

@@ -10,12 +10,17 @@ import {
   faWifi,
   faCar,
 } from '@fortawesome/free-solid-svg-icons';
+import ImageGallery from '../ImageGallery/ImageGallery';
+import Modal from '../Modal/Modal';
+import images from '../../utils/imagesGallery.json';
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   console.log('title', id);
   console.log('productState', product);
+
+  const [stateModal, setStateModal] = useState(false);
 
   useEffect(() => {
     {
@@ -26,6 +31,21 @@ const ProductDetail = () => {
     );
     setProduct(productFind);
   }, [id]);
+
+  /* SACAR ESTO */
+  const [widthSize, setWithSize] = useState(window.innerWidth);
+
+  const desktop = widthSize < 1333 ? false : true;
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize, false);
+  }, []);
+
+  console.log(widthSize);
+
+  const handleResize = () => {
+    setWithSize(window.innerWidth);
+  };
 
   return (
     <div className={style.container}>
@@ -60,6 +80,45 @@ const ProductDetail = () => {
           </div>
           <span className={style.scoreNumber}>8</span>
         </div>
+      </section>
+
+      <section className={style.galleryContainer}>
+        {desktop ? (
+          <>
+            <div className={style.imagesDesktopContainer}>
+              <div className={style.bigImageContainer}>
+                {images.slice(0, 1).map((image) => (
+                  <img src={image.original} alt="foto" />
+                ))}
+              </div>
+              <div className={style.smallsImageContainer}>
+                {images.slice(1, 3).map((image) => (
+                  <div>
+                    <img src={image.original} alt="foto" />
+                  </div>
+                ))}
+              </div>
+              <div className={style.smallsImageContainer2}>
+                {images.slice(3, 5).map((image) => (
+                  <div>
+                    <img src={image.original} alt="foto" />
+                  </div>
+                ))}
+              </div>
+
+              <button
+                type="link"
+                className={style.viewMoreText}
+                onClick={() => setStateModal(!stateModal)}
+              >
+                Ver más
+              </button>
+            </div>
+            {/* <ImageGallery /> */}
+          </>
+        ) : (
+          <ImageGallery images={images.slice(0, 5)} />
+        )}
       </section>
 
       <section className={style.descriptionContainer}>
@@ -131,6 +190,17 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+      {desktop && (
+        <Modal
+          state={stateModal}
+          changeState={setStateModal}
+          showHeader={false}
+          showOverlay={true}
+          padding={false}
+        >
+          <ImageGallery images={images} />
+        </Modal>
+      )}
     </div>
   );
 };
