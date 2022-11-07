@@ -3,27 +3,10 @@ import ReactImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import './ImageGallery.css';
 
-const images = [
-  {
-    original: 'https://picsum.photos/id/1018/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1018/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1015/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1015/250/150/',
-  },
-  {
-    original: 'https://picsum.photos/id/1019/1000/600/',
-    thumbnail: 'https://picsum.photos/id/1019/250/150/',
-    originalAlt: 'Alt de Imagen',
-    description: 'Descripcion de la imagen',
-    originalTitle: 'Original Title buscadores imagen',
-    thumbnailTitle: 'Title Thumbnail',
-  },
-];
-
-const ImageGallery = () => {
+const ImageGallery = ({ images }) => {
   const [widthSize, setWithSize] = useState(window.innerWidth);
+  const [data, setData] = useState(images);
+  console.log('data', data);
 
   let desktop = widthSize > 1333 ? true : false;
 
@@ -45,8 +28,8 @@ const ImageGallery = () => {
     <div className="containerReactImageGallery">
       {desktop ? (
         <ReactImageGallery
-          items={images}
-          showPlayButton={true}
+          items={data}
+          showPlayButton={false}
           showFullscreenButton={false}
           showIndex={true}
           autoPlay={false}
@@ -55,7 +38,7 @@ const ImageGallery = () => {
         />
       ) : (
         <ReactImageGallery
-          items={images}
+          items={data}
           showPlayButton={false}
           showFullscreenButton={false}
           showIndex={true}

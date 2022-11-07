@@ -11,12 +11,16 @@ import {
   faCar,
 } from '@fortawesome/free-solid-svg-icons';
 import ImageGallery from '../ImageGallery/ImageGallery';
+import Modal from '../Modal/Modal';
+import images from '../../utils/imagesGallery.json';
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
   console.log('title', id);
   console.log('productState', product);
+
+  const [stateModal, setStateModal] = useState(false);
 
   useEffect(() => {
     {
@@ -83,22 +87,37 @@ const ProductDetail = () => {
           <>
             <div className={style.imagesDesktopContainer}>
               <div className={style.bigImageContainer}>
-                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+                {images.slice(0, 1).map((image) => (
+                  <img src={image.original} alt="foto" />
+                ))}
               </div>
               <div className={style.smallsImageContainer}>
-                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
-                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+                {images.slice(1, 3).map((image) => (
+                  <div>
+                    <img src={image.original} alt="foto" />
+                  </div>
+                ))}
               </div>
               <div className={style.smallsImageContainer2}>
-                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
-                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+                {images.slice(3, 5).map((image) => (
+                  <div>
+                    <img src={image.original} alt="foto" />
+                  </div>
+                ))}
               </div>
-              <p className={style.viewMoreText}>Ver más</p>
+
+              <button
+                type="link"
+                className={style.viewMoreText}
+                onClick={() => setStateModal(!stateModal)}
+              >
+                Ver más
+              </button>
             </div>
             {/* <ImageGallery /> */}
           </>
         ) : (
-          <ImageGallery />
+          <ImageGallery images={images.slice(0, 5)} />
         )}
       </section>
 
@@ -171,6 +190,17 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+      {desktop && (
+        <Modal
+          state={stateModal}
+          changeState={setStateModal}
+          showHeader={false}
+          showOverlay={true}
+          padding={false}
+        >
+          <ImageGallery images={images} />
+        </Modal>
+      )}
     </div>
   );
 };
