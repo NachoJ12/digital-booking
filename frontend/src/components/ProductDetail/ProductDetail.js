@@ -10,6 +10,7 @@ import {
   faWifi,
   faCar,
 } from '@fortawesome/free-solid-svg-icons';
+import ImageGallery from '../ImageGallery/ImageGallery';
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -26,6 +27,21 @@ const ProductDetail = () => {
     );
     setProduct(productFind);
   }, [id]);
+
+  /* SACAR ESTO */
+  const [widthSize, setWithSize] = useState(window.innerWidth);
+
+  const desktop = widthSize < 1333 ? false : true;
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize, false);
+  }, []);
+
+  console.log(widthSize);
+
+  const handleResize = () => {
+    setWithSize(window.innerWidth);
+  };
 
   return (
     <div className={style.container}>
@@ -60,6 +76,30 @@ const ProductDetail = () => {
           </div>
           <span className={style.scoreNumber}>8</span>
         </div>
+      </section>
+
+      <section className={style.galleryContainer}>
+        {desktop ? (
+          <>
+            <div className={style.imagesDesktopContainer}>
+              <div className={style.bigImageContainer}>
+                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+              </div>
+              <div className={style.smallsImageContainer}>
+                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+              </div>
+              <div className={style.smallsImageContainer2}>
+                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+                <img src="https://picsum.photos/id/1019/1000/600/" alt="foto" />
+              </div>
+              <p className={style.viewMoreText}>Ver más</p>
+            </div>
+            {/* <ImageGallery /> */}
+          </>
+        ) : (
+          <ImageGallery />
+        )}
       </section>
 
       <section className={style.descriptionContainer}>
