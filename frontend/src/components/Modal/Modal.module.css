@@ -1,0 +1,77 @@
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* revisar si genera problemas despues*/
+}
+
+.overlay.active {
+  background-color: rgba(49, 54, 63, 0.95);
+}
+
+.modalContainer {
+  width: 647px;
+  min-height: 100px;
+  background-color: var(--white-color);
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+
+.modalContainer.notPadding {
+  padding: 0;
+}
+
+.modalContainer img {
+  width: 100%;
+  vertical-align: top;
+  border-radius: 8px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.modalHeader h3 {
+  font-weight: 500;
+  font-size: 16px;
+  color: #1766dc;
+}
+
+.closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  border-radius: 5px;
+  color: var(--white-color);
+  z-index: 4;
+}
+
+.closeButton:hover {
+  /* background-color: #f2f2f2; */
+  background-color: #8c8c8c;
+}
+
+.closeButton svg {
+  width: 100%;
+  height: 100%;
+}
