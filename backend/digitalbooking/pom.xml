@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.grupo9</groupId>
 	<artifactId>digitalbooking</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>digitalbooking</name>
 	<description>Digital Booking project</description>
@@ -42,11 +43,7 @@
 			<artifactId>springfox-boot-starter</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-parent</artifactId>
-			<version>2.4.0</version>
-		</dependency>
+
 
 	</dependencies>
 

@@ -1,0 +1,157 @@
+@import '~react-image-gallery/styles/css/image-gallery.css';
+
+.containerReactImageGallery {
+  width: 100%;
+}
+
+.image-gallery {
+  border-radius: 8px;
+}
+
+.image-gallery-content {
+  background-color: var(--white-color);
+  border-radius: 8px;
+}
+
+.image-gallery-slides {
+  box-shadow: 0px 5px 5px rgb(0 0 0 / 35%);
+  border-radius: 8px;
+  max-height: 594px;
+}
+
+/* tablet/mobile que ocupe todo el ancho */
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  /* max-height: none; */
+  /* max-height: 594px; */
+  max-height: inherit;
+  object-fit: cover;
+}
+
+.image-gallery-slide .image-gallery-image {
+  width: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+
+.image-gallery-slide.center {
+  max-height: 57vw;
+}
+
+/* ****** */
+
+.image-gallery-index {
+  top: 92%;
+  right: 0;
+  background: none;
+  color: var(--white-color);
+  font-weight: 700;
+  background: #000000a8;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+
+.image-gallery-thumbnails {
+  margin: 40px 0 0;
+}
+
+.image-gallery-thumbnail {
+  transition: none;
+}
+
+.image-gallery-thumbnail.active {
+  border: none;
+}
+
+.image-gallery-thumbnail:hover {
+  border: none;
+}
+
+.image-gallery-thumbnail:focus {
+  border: none;
+}
+
+.image-gallery-thumbnail-image {
+  border-radius: 8px;
+}
+
+.image-gallery-right-nav .image-gallery-svg,
+.image-gallery-left-nav .image-gallery-svg {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  box-shadow: 0px 1px 1px rgb(0 0 0 / 14%), 0px 2px 1px rgb(0 0 0 / 12%),
+    0px 1px 3px rgb(0 0 0 / 20%);
+}
+
+.image-gallery-right-nav .image-gallery-svg:hover,
+.image-gallery-left-nav .image-gallery-svg:hover {
+  /* background-color: var(--white-color); */
+  /* color: var(--primary-color); */
+  /* border: 1px solid var(--primary-color); */
+  background-color: #d33c13;
+}
+
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  padding: 0;
+  margin: 0 10px;
+}
+
+/* Estilos para cuando una imagen esta rota no se desconfigure, revisar mejor para que quede optimo y no esté pisando a las imagenes que si andan bien*/
+
+/* .image-gallery-content .image-gallery-slide .image-gallery-image {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  transform: translateY(-50%);
+  width: fit-content;
+}
+
+.image-gallery-slide.center {
+  position: relative;
+  background: grey;
+  height: 500px;
+} */
+
+@media (min-width: 1333px) {
+  .containerReactImageGallery {
+    max-width: 1250px;
+  }
+
+  .image-gallery-content .image-gallery-slide .image-gallery-image {
+    /* max-height: calc(100vh - 80px); */
+    max-height: 388px;
+    object-fit: cover;
+  }
+
+  .image-gallery-slide .image-gallery-image {
+    width: 100%;
+    max-height: calc(100vh - 80px);
+    /* object-fit: cover; */
+  }
+
+  .image-gallery-image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .image-gallery-index {
+    top: 102%;
+    right: calc(50% - 2.25rem);
+    color: var(--thirth-color);
+    background: none;
+    border-radius: 0;
+  }
+
+  .image-gallery-thumbnail {
+    width: 148px;
+  }
+}
+
+@media (max-width: 473px) {
+  .image-gallery-index {
+    top: 88%;
+  }
+}
