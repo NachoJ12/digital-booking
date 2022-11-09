@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 import es from 'date-fns/locale/es';
 
-const Calendar = () => {
+const Calendar = (inline) => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   // setDefaultLocale('es');
@@ -38,7 +38,9 @@ const Calendar = () => {
         setDateRange(update);
       }}
       locale="es"
+      {...(inline ? inline : false)}
       //   isClearable={true}
+      // fixedHeight
     />
   );
 };

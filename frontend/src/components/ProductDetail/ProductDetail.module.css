@@ -211,6 +211,27 @@
   width: 24px;
 }
 
+/* Seccion Reserva-calendario */
+.availableDatesContainer {
+  display: flex;
+  flex-direction: column;
+  background: rgba(56, 59, 88, 0.1);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.availableDatesContainer h2 {
+  padding: 25px 0 15px;
+}
+
+.reserveContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 30px 0;
+}
+/************/
+
 .policiesList {
   display: grid;
   grid-auto-columns: 1fr;
@@ -258,6 +279,16 @@
   /* .featureList {
     grid-template-columns: 1fr 1fr;
   } */
+
+  .availableDatesContainer h2 {
+    padding: 20px 0;
+  }
+
+  .reserveContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .policiesList {
     grid-template-columns: 1fr 1fr;
   }
@@ -288,6 +319,38 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 34px;
   }
+
+  .availableDatesContainer {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-rows: 0.2fr 1.8fr;
+    gap: 0px 10px;
+    flex-wrap: wrap;
+  }
+
+  .availableDatesContainer h2 {
+    padding: 20px 0;
+    width: 100%;
+  }
+
+  .calendarReserve {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .reserveContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-color);
+    border: 1px solid var(--white-color);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    border-radius: 8px;
+    padding: 26px 16px 15px;
+    gap: 30px;
+  }
+
   .policiesList {
     grid-template-columns: 1fr 1fr 1fr;
   }
