@@ -1,10 +1,37 @@
-upload to s3:
-  stage: deploy
-  image: python:latest
-  
-  script:
-    - pip install awscli
-    - aws configure set region us-east-2
-    - aws s3 rm --recursive s3://$AWS_BUCKET/
-    - aws s3 cp ./ s3://$AWS_BUCKET/ --recursive
-  
+stages:
+    - build
+    - deploy
+
+build:
+    stage: build
+    image:  maven:3.6.1-jdk-8-slim
+    script:
+        - echo "Building app..."
+        - mvn clean install
+        - echo "Finished building the app."
+    artifacts:
+        expire_in: 1 week
+        paths:
+            - target/consoleapp.jar
+    only:
+        - master
+
+deploy:
+    stage: deploy
+    image: alpine:3.11
+    before_script:
+        - apk update && apk add openssh-client bash
+        - mkdir -p ~/.ssh
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+        - touch ~/.ssh/config
+        - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+        - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts
+    script:
+        - echo "Deploying started..."
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl stop consoleapp.service"
+        - scp ./target/consoleapp.jar ubuntu@$DEPLOY_SERVER_IP:~/console-app/
+        - ssh ubuntu@$DEPLOY_SERVER_IP "sudo systemctl start consoleapp.service"
+        - echo "Finished deploying the app."
+    only:
+        - master
