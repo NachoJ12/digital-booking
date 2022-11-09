@@ -13,6 +13,7 @@ import {
 import ImageGallery from '../ImageGallery/ImageGallery';
 import Modal from '../Modal/Modal';
 import images from '../../utils/imagesGallery.json';
+import Calendar from '../Search/Calendar/Calendar';
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
@@ -156,6 +157,20 @@ const ProductDetail = () => {
           </div>
         </div>
       </section>
+      {/* Calendario */}
+      <section className={style.availableDatesContainer}>
+        <h2>Fechas disponibles</h2>
+        <div className={style.calendarReserve}>
+          <div className={style.calendarContainer}>
+            <Calendar inline={true} />
+          </div>
+          <div className={style.reserveContainer}>
+            <p>Agregá tus fechas de viaje para obtener precios exactos</p>
+            <button className="btn btn2 w-100">Iniciar reserva</button>
+          </div>
+        </div>
+      </section>
+
       <section className={style.policiesContainer}>
         <h2>Qué tenés que saber</h2>
         <hr className={style.line} />

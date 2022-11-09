@@ -30,28 +30,31 @@ public class Product {
     @JoinColumn(name = "city_id")
     private City city;
 
+    @OneToMany
+    @JoinColumn(name="image_id")
+    private Image image;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-
-    public void setCity(City city) {
-        this.city = city;
-    }
-
     public Product() {
+    }
+
+    public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, Image image, Category category) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.short_description = short_description;
+        this.active = active;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.area = area;
+        this.average_score = average_score;
+        this.city = city;
+        this.image = image;
+        this.category = category;
     }
 
     public Integer getId() {
@@ -132,5 +135,28 @@ public class Product {
 
     public void setAverage_score(Double average_score) {
         this.average_score = average_score;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
