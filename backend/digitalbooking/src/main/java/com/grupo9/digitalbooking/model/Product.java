@@ -1,14 +1,14 @@
 package com.grupo9.digitalbooking.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="product")
 
 public class Product {
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -27,12 +27,11 @@ public class Product {
     private Double average_score ;
 
     @ManyToOne
-    @JoinColumn(name = "city_id")
+    @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 
-    @OneToMany
-    @JoinColumn(name="image_id")
-    private Image image;
+    @OneToMany (mappedBy = "product")
+    private List<Image> image;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -41,7 +40,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, Image image, Category category) {
+    public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, List<Image> image, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -152,11 +151,11 @@ public class Product {
         this.category = category;
     }
 
-    public Image getImage() {
+    public List<Image> getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(List<Image> image) {
         this.image = image;
     }
 }
