@@ -1,0 +1,109 @@
+variables:
+  RULES_CHANGES_PATH: "**/*"
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  AWS_S3_URL: $AWS_S3_URL_FRONT
+  
+stages:
+  - build
+  - test
+  - deploy
+  
+  
+.base-rules:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
+      changes:
+		- RULES_CHANGES_PATH
+	- when: manual
+      allow_failure: true
+	
+	
+.backend:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "backend/**/*" (validar como esta escrito el Backend)
+	
+	
+.frontend:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "frontend/**/*" (validar como esta escrito el frontend)
+	
+
+backend-build:
+  image: maven:latest
+  stage: build
+  extends: .backend
+  needs: []
+  script:
+    - echo "Compiling the backend code..."
+	- cd backend/proyecto-integrador/demo (validar ruta del backend)
+	-mvn clean package -DskipTests -U
+  artifacts:
+   paths:
+	-backend/proyecto-integrador/demo/target/*.jar (validar ruta del backend)
+
+frontend-build:
+  image: node:16.14.2-alpine
+  stage: build
+  extends: .frontend
+  needs: []
+  script:
+    - echo "Compiling the frontend code..."
+	- ls -la
+	- cd FrontEnd (validar como esta escrito el frontend)
+	- npm install
+	- CI=false npm run build
+	- echo "Compile complete"
+  artifacts:
+   paths:
+	-frontend/build (validar nombre de front)
+
+backend-test:
+  stage: test
+  extends: .backend
+  needs: ["backend-build"]
+  script:
+    - echo "Testing the backend code..."
+  artifacts:
+   paths:
+	-backend/proyecto-integrador/demo/target/*.jar (validar ruta del backend)
+
+frontend-test:
+  stage: test
+  extends: .frontend
+  needs: ["frontend-build"]
+  script:
+    - echo "Testing the frontend code..."
+  artifacts:
+    paths:
+	 -frontend/build (validar nombre de front)
+
+backend-deploy:
+  stage: deploy
+  extends: .backend
+  needs: ["backend-test"]
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh)'
+	-eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+	- mkdir -p ~/.ssh
+	- chmod 700 ~/.ssh
+	- ssh-keyscan $EC2_IPADDRESS >> ~/.ssh/known_hosts
+	- chmod 644 ~/.ssh/known_hosts
+  script:
+    - scp -o StricHostKeyCheking=no Backend/proyecto-integrador/demo/target/demo-0.0.1-SNAPSHOT.jar login@3.128.26.29:/home/ubuntu/
+	- ssh -o StricHostKeyCheking=no login@3.128.26.29 "/home/ubuntu/scripts/shutdown.sh;/home/ubuntu/scripts/startup.sh"
+
+frontend-deploy:
+  image: python:latest
+  stage: deploy
+  extends: .frontend
+  needs: ["frontend-test"]
+  script:
+    - echo "Deploying the frontend app..."
+    - pip install awscli
+	- aws configure set aws_acces_key_id $AWS_ACCESS_KEY_ID
+	- aws configure set aws_secret_acces_key $AWS_SECRET_ACCESS_KEY
+	- aws s3 sync frontend/build s3://0521ptc2n2-grupo9-airc2cfronts3henry --delete
