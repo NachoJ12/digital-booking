@@ -39,18 +39,5 @@ backend-build:
         - "mvn clean package"
     artifacts: 
         paths:
-        - $BACKEND_PATH/*.jar
+        - $BACKEND_PATH
 
-frontend-build:
-    image: node:16.13.1-alpine3.15
-    stage: build
-    extends: .frontend
-    needs: []
-    script: 
-        - echo "Building frontend"
-        - cd $FRONTEND_PATH
-        - npm i --legacy-peer-deps
-        - npm run prod
-    artifacts:
-        paths:
-        - $FRONTEND_PATH
