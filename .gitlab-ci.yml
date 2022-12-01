@@ -1,7 +1,7 @@
 variables:
   RULES_CHANGES_PATH: "*/"
   FRONTEND_PATH: "frontend/"
-  BACKEND_PATH: "backend/digitalbooking/"
+  BACKEND_PATH: "backend/digitalbooking"
 
 
 stages:
@@ -39,7 +39,7 @@ backend-build:
         - "mvn clean package"
     artifacts: 
         paths:
-        - $BACKEND_PATH target/*.jar
+        - $BACKEND_PATH/target/*.jar
 
 frontend-build:
     image: node:16.13.1-alpine3.15
@@ -50,7 +50,7 @@ frontend-build:
         - echo "Building frontend"
         - cd $FRONTEND_PATH
         - npm i --legacy-peer-deps
-        - npm run build
+        - npm run prod
     artifacts:
         paths:
         - $FRONTEND_PATH
