@@ -39,5 +39,5 @@ backend-build:
         - "mvn clean package"
     artifacts: 
         paths:
-        - $BACKEND_PATH
+        - target/*.jar
 
