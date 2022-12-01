@@ -90,7 +90,7 @@ backend-deploy:
     - ssh-keyscan -H $DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
     - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
     - chmod +x start-app.sh
-    - scp start-app.sh ec@$DEPLOY_SERVER_BA_IP:/ 
+    - scp start-app.sh ec2-user@$DEPLOY_SERVER_BA_IP:/ 
   script:
     - echo "Deploying..."
     - scp $BACKEND_PATH/target/*.jar ec2-user@$DEPLOY_SERVER_BA_IP:/
