@@ -1,7 +1,7 @@
 variables:
   RULES_CHANGES_PATH: "*/"
   FRONTEND_PATH: "frontend/"
-  BACKEND_PATH: "backend/digitalbooking"
+  BACKEND_PATH: "backend/digitalbooking/"
 
 
 stages:
@@ -35,7 +35,7 @@ backend-build:
     needs: []
     script:
         - echo "Building backend"
-        - "cd backend/application"
+#  - "cd backend/application"
         - "mvn clean package"
     artifacts: 
         paths:
