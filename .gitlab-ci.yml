@@ -35,7 +35,7 @@ backend-build:
     needs: []
     script:
         - echo "Building backend"
-#  - "cd backend/application"
+        - "cd backend/digitalbooking"
         - "mvn clean package"
     artifacts: 
         paths:
