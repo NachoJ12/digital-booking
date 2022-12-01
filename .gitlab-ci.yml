@@ -39,5 +39,72 @@ backend-build:
         - "mvn clean package"
     artifacts: 
         paths:
-        - target/*.jar
+        - $BACKEND_PATH/target/*.jar
 
+frontend-build:
+    image: node:16.13.1-alpine3.15
+    stage: build
+    extends: .frontend
+    needs: []
+    script: 
+        - echo "Building frontend"
+        - cd $FRONTEND_PATH
+        - npm i --legacy-peer-deps
+        - npm run build
+    artifacts:
+        paths:
+        - $FRONTEND_PATH
+
+backend-test:
+    stage: test
+    extends: .backend
+    needs: ["backend-build"]
+    script: 
+        - echo "Testing backend"
+    artifacts:
+        paths:
+        - $BACKEND_PATH/target/*.jar
+
+frontend-test:
+    stage: test
+    extends: .frontend
+    needs: ["frontend-build"]
+    script:
+        - echo "Testing frontend"
+    artifacts:
+        paths:
+        - $FRONTEND_PATH/Testing/
+
+backend-deploy:
+  stage: deploy
+  image: alpine:3.11
+  extends: .backend
+  needs: ["backend-test"]
+  before_script:
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
+    - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
+    - chmod +x start-app.sh
+    - scp start-app.sh ec@$DEPLOY_SERVER_BA_IP:/home/ubuntu/ 
+  script:
+    - echo "Deploying..."
+    - scp $BACKEND_PATH/target/*.jar ubuntu@$DEPLOY_SERVER_BA_IP:/home/ubuntu/
+    - ssh ubuntu@$DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
+    - ssh ubuntu@$DEPLOY_SERVER_BA_IP '/home/ubuntu/start-app.sh'
+    
+frontend-deploy:
+    image: python:latest
+    stage: deploy
+    extends: .frontend
+    needs: ["frontend-test"]
+    script:
+        - echo "Deploying frontend"
+        - pip install awscli
+        - aws configure set aws_acces_key_id $AWS_ACCESS_KEY_ID
+        - aws configure set aws_secret_acces_key $AWS_SECRET_ACCESS_KEY
+        - aws s3 sync $FRONTEND_PATH/dist s3://$AWS_S3_NAME --delete
