@@ -39,7 +39,7 @@ backend-build:
         - "mvn clean package"
     artifacts: 
         paths:
-        - $BACKEND_PATH/target/*.jar
+        - $BACKEND_PATH/*.jar
 
 frontend-build:
     image: node:16.13.1-alpine3.15
