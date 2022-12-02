@@ -11,20 +11,29 @@ public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String country;
     private String name;
 
-@OneToMany(mappedBy = "city")
-@JsonIgnore
-private List<Product> product;
+    @ManyToOne
+    @JoinColumn(name="country_id", referencedColumnName = "id")
+    private Country country;
+
+    @OneToMany(mappedBy = "city")
+    @JsonIgnore
+    private List<Product> product;
 
     public City() {
     }
 
-    public City(Integer id, String country, String name, List<Product> product) {
+    public City(Integer id, String name, Country country) {
         this.id = id;
-        this.country = country;
         this.name = name;
+        this.country = country;
+    }
+
+    public City(Integer id, String name, Country country, List<Product> product) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
         this.product = product;
     }
 
@@ -36,11 +45,11 @@ private List<Product> product;
         this.id = id;
     }
 
-    public String getCountry() {
+   public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 

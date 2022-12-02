@@ -6,6 +6,28 @@
   background-color: rgb(196 196 196 / 10%);
 }
 
+.formLogin {
+  flex-direction: column;
+}
+
+.msgLoginBookingError {
+  background-color: rgb(255 0 0 / 10%);
+  color: #b00020;
+  font-size: 14px;
+  padding: 24px 16px 23px 19px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  max-width: 100%;
+}
+
+.msgLoginBookingError svg {
+  width: 31px;
+  height: 31px;
+  margin-right: 14px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -46,19 +68,35 @@
   text-align: center;
   color: var(--red-color);
   padding: 0 0.5rem;
+  width: 300px;
 }
 
 @media (min-width: 768px) {
+  .msgLoginBookingError {
+    width: 346px;
+    padding: 22.5px 34px 22.5px 47px;
+  }
+  .msgErrorInvalidForm {
+    width: 346px;
+  }
   .submitButton {
     margin-top: 20px; /* 55px*/
   }
 }
 
 @media (min-width: 1333px) {
+  .msgLoginBookingError {
+    width: 448px;
+    font-size: 16px;
+    padding: 15.5px;
+  }
   .inputGroup {
     flex-direction: row;
     max-width: 450px;
     gap: 12px;
+  }
+  .msgErrorInvalidForm {
+    width: 448px;
   }
   .submitButton {
     width: 206px;

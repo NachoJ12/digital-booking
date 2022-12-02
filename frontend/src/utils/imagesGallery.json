@@ -1,55 +1,63 @@
 [
   {
-    "original": "https://images.unsplash.com/photo-1624254495476-db6cc8b77e98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    "id": 1,
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-phone.jpg"
   },
   {
-    "original": "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+    "id": 2,
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1018/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1018/250/150/"
+    "id": 3,
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg"
   },
   {
-    "original": "https://images.unsplash.com/photo-1624254495476-db6cc8b77e98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    "id": 4,
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1015/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1015/250/150/"
+    "id": 5,
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-05-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-05-1366.jpg",
+    "originalAlt": "",
+    "description": "",
+    "originalTitle": "",
+    "thumbnailTitle": ""
   },
   {
-    "original": "https://picsum.photos/id/1019/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1019/250/150/",
-    "originalAlt": "Alt de Imagen",
-    "description": "Descripcion de la imagen",
-    "originalTitle": "Original Title buscadores imagen",
-    "thumbnailTitle": "Title Thumbnail"
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-phone.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1019/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1019/250/150/",
-    "originalAlt": "Alt de Imagen",
-    "originalTitle": "Original Title buscadores imagen",
-    "thumbnailTitle": "Title Thumbnail"
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1019/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1019/250/150/",
-    "originalAlt": "Alt de Imagen",
-    "originalTitle": "Original Title buscadores imagen",
-    "thumbnailTitle": "Title Thumbnail"
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1019/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1019/250/150/",
-    "originalAlt": "Alt de Imagen",
-    "originalTitle": "Original Title buscadores imagen",
-    "thumbnailTitle": "Title Thumbnail"
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg"
   },
   {
-    "original": "https://picsum.photos/id/1019/1000/600/",
-    "thumbnail": "https://picsum.photos/id/1019/250/150/",
-    "originalAlt": "Alt de Imagen",
-    "originalTitle": "Original Title buscadores imagen",
-    "thumbnailTitle": "Title Thumbnail"
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-phone.jpg"
+  },
+  {
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-02-1366.jpg"
+  },
+  {
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-03-1366.jpg"
+  },
+  {
+    "original": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg",
+    "thumbnail": "https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-04-1366.jpg"
   }
 ]

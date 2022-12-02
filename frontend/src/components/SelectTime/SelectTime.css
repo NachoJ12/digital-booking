@@ -1,0 +1,100 @@
+/* Select time React date Picker*/
+
+/* .react-datepicker-popper {
+  max-width: 360px; 
+  width: 100%;
+}
+
+.react-datepicker react-datepicker--time-only {
+  max-width: 360px; 
+  width: 100%;
+} */
+/* revisar si no rompe los otros inputs*/
+
+/* .selectTime .react-datepicker-popper {
+  transform: translate3d(28px, 1074.5px, 0px) !important;
+} */
+.selectTime .react-datepicker__input-container input {
+  cursor: pointer;
+}
+
+.selectTime
+  .react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  display: none;
+}
+.selectTime .react-datepicker-popper {
+  transform: translate3d(59px, 996.5px, 0px);
+}
+
+.selectTime .react-datepicker__triangle {
+  display: none;
+}
+
+.selectTime .react-datepicker {
+  min-width: 210px;
+  width: 360px;
+}
+
+.selectTime .react-datepicker__time-container {
+  width: 100%;
+}
+
+.selectTime .react-datepicker__time-container .react-datepicker__time {
+  width: 100%;
+}
+
+.selectTime
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box {
+  width: 100%;
+  margin: 0;
+  text-align: start;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.selectTime {
+  position: relative;
+}
+
+.selectTime svg {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.selectTime svg:hover {
+  color: var(--primary-color-hover);
+}
+
+@media (min-width: 768px) {
+  .selectTime .react-datepicker__time-container .react-datepicker__time {
+    width: 320px;
+  }
+  .selectTime .react-datepicker {
+    width: 320px;
+  }
+}
+@media (min-width: 1333px) {
+  .selectTime .react-datepicker {
+    width: 391px;
+  }
+  .selectTime .react-datepicker__time-container .react-datepicker__time {
+    width: 391px;
+  }
+}
+
+@media (max-width: 412px) {
+  .selectTime .react-datepicker {
+    width: 100px;
+  }
+  /* .selectTime .react-datepicker-popper {
+    transform: translate3d(37px, 1074.5px, 0px) !important;
+  } */
+  /* .selectTime .react-datepicker__time-container .react-datepicker__time {
+    width: 391px;
+  } */
+}

@@ -1,0 +1,43 @@
+.policiesList {
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0 20px;
+}
+
+.policie {
+  color: var(--secondary-color);
+  max-width: 311px;
+}
+
+.policie h3 {
+  padding: 12px 0;
+}
+
+.policie ul {
+  font-size: 14px;
+}
+
+.policie ul li {
+  padding: 12px 0;
+}
+
+.line {
+  border: solid 1px var(--primary-color);
+  outline: none;
+  background: var(--primary-color);
+  margin: 12px 0 15px;
+}
+
+@media (min-width: 768px) {
+  .policiesList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1333px) {
+  .policiesList {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

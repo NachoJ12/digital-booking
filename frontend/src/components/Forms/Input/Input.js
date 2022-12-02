@@ -14,6 +14,7 @@ const Input = ({
   placeholder,
   regex,
   executeFunction,
+  readonly,
 }) => {
   const [viewPassword, setViewPassword] = useState(false);
   const [changeType, setChangeType] = useState(null);
@@ -62,6 +63,7 @@ const Input = ({
           placeholder={placeholder}
           onBlur={validation}
           valid={state.valid}
+          readOnly={readonly && true}
         />
         {id === 'password' && state.value.length > 0 && (
           <span

@@ -1,0 +1,109 @@
+.selectBox {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+.dropDownHeader {
+  /* select */
+  background: #ffffff;
+  color: rgb(49 54 63 / 50%);
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: 100%;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s ease all;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  height: 40px;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.dropDownList {
+  /* options */
+  position: absolute;
+  background: #ffffff;
+  color: var(--secondary-color);
+  font-size: 1.3rem;
+  font-weight: 500;
+  width: 100%;
+  max-height: 230px;
+  padding: 0 13px;
+  margin: 0;
+  border: 1px solid #f3f1ed;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 5px 5px;
+  box-sizing: border-box;
+  overflow: auto;
+  z-index: 100;
+}
+
+/* .dropDownHeader.active,
+.dropDownHeader:hover {
+  border: 2px solid var(--primary-color);
+} */
+
+.title {
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.initialDescription {
+  font-size: 14px;
+  font-weight: 500;
+  color: #7f7f7f;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.selectContent,
+.optionContent {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: 0.2s ease all;
+}
+
+.optionContent {
+  border-bottom: 1px solid var(--primary-color);
+  padding: 11px 0;
+  cursor: pointer;
+}
+
+.optionContent:last-child {
+  border-bottom: 1px solid transparent;
+}
+
+.selectContent svg {
+  width: 20px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.optionContent svg {
+  width: 20px;
+  height: 23px;
+  margin-right: 20px;
+}
+
+.dropDownList .optionContent:hover {
+  /* background: rgb(240 87 45 / 20%); */
+  background-color: #ececec;
+}
+
+/* .dropDownList .optionContent:hover .title,
+.dropDownList .optionContent:hover .description {
+  color: #fff;
+  color: var(--primary-color);
+} */

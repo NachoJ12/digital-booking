@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   width: 300px;
+  /* max-width: 300px;
+  width: 100%; */
+  /* revisar inputs que no se haya roto nada */
   height: 81px; /* 62px input normal + 19px para error*/
 
   font-size: 12px;
@@ -30,6 +33,12 @@
 input:focus {
   outline: none;
   background-color: var(--white-color);
+}
+
+.input:read-only {
+  background: rgb(223 228 234 / 40%);
+  font-weight: 500;
+  color: rgb(84 87 118 / 75%);
 }
 
 .inputError {

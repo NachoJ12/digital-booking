@@ -4,3 +4,9 @@
   background: var(--secondary-color);
   padding-bottom: 25px;
 }
+
+@media (min-width: 768px) {
+  .container {
+    background: var(--light-grey-color);
+  }
+}
