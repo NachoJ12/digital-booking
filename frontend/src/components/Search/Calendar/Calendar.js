@@ -3,27 +3,30 @@ import DatePicker, { registerLocale } from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './Calendar.css';
 import es from 'date-fns/locale/es';
+import useWindowSize from '../../../hooks/useWindowSize';
+import { dateRangeContext } from '../../../context/DateRangeContext';
+import { useContext } from 'react';
 
-const Calendar = (inline) => {
+const Calendar = ({ inline, reserved }) => {
+  const { dateRangeCapture } = useContext(dateRangeContext);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
   // setDefaultLocale('es');
   registerLocale('es', es);
-
-  const [width, setWidth] = useState(window.innerWidth);
+  const { width } = useWindowSize();
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    dateRangeCapture(dateRange);
+  });
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
+  const dateBooking = reserved?.map((booking) => {
+    return {
+      start: new Date(booking.check_in_date),
+      end: new Date(booking.checkout_date),
     };
-  }, []);
-  // console.log('widthMenu', width);
+  });
 
-  const handleResize = () => {
-    setWidth(window.innerWidth);
-  };
+  // console.log(dateBooking);
 
   return (
     <DatePicker
@@ -38,9 +41,11 @@ const Calendar = (inline) => {
         setDateRange(update);
       }}
       locale="es"
-      {...(inline ? inline : false)}
+      inline={inline || false}
       //   isClearable={true}
       // fixedHeight
+      // excludeDates={dateBooking}
+      excludeDateIntervals={dateBooking}
     />
   );
 };

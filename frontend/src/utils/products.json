@@ -2,19 +2,18 @@
   {
     "id": 1,
     "img": "https://images.unsplash.com/photo-1624254495476-db6cc8b77e98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-    "category": "Glamping",
-    "title": "Glamping Estilo Florida",
-    "location": "Mendoza",
-    "description": "Dispuestas sobre una plataforma, están completamente amobladas, ofrecen camas reales con lencería de alta calidad, aire acondicionado y calefacción para mantener su carpa a la temperatura perfecta, además de baño privado. En nuestro resort glamping, puedes dormir bajo 5 millones de estrellas, resguardado bajo un dosel de majestuosos robles. Ya sea que su escapada favorita se parezca a un retiro rural, o tenga el espíritu de un guerrero al aire libre, una cosa sí es segura: ¡El glamping es toda una aventura con estilo! ¡Consulte nuestras tarifas ahora para obtener la mejor experiencia de campamento de lujo en el estado del sol!"
+    "category": "Casas",
+    "title": "Casa en La Plata",
+    "location": "La Plata",
+    "description": "Hermosa casa en el centro de La Plata. Luminosa, con cálidos ambientes. 2 plantas, 4 habitaciones, 2 baños, parque y piscina."
   },
-
   {
     "id": 2,
-    "img": "https://images.unsplash.com/photo-1641569618527-68e26db76db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
-    "category": "Glamping",
-    "title": "Glamping Hermitage",
-    "location": "A 415m del centro",
-    "description": "Dispuestas sobre una plataforma, están completamente amobladas, ofrecen camas reales con lencería de alta calidad, aire acondicionado y calefacción para mantener su carpa a la temperatura perfecta, además de baño privado. En nuestro resort glamping, puedes dormir bajo 5 millones de estrellas, resguardado bajo un dosel de majestuosos robles. Ya sea que su escapada favorita se parezca a un retiro rural, o tenga el espíritu de un guerrero al aire libre, una cosa sí es segura: ¡El glamping es toda una aventura con estilo! ¡Consulte nuestras tarifas ahora para obtener la mejor experiencia de campamento de lujo en el estado del sol!"
+    "img": "https://images.unsplash.com/photo-1624254495476-db6cc8b77e98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    "category": "Casas",
+    "title": "Casa en Mar del Plata",
+    "location": "Mar del Plata",
+    "description": "Hermosa casa junto a la playa. Cuenta con 3 dormitorios, TV de pantalla plana con canales por cable, cocina equipada con microondas y heladera, lavarropas y 2 baños con bidet."
   },
   {
     "id": 3,
@@ -64,5 +63,21 @@
     "title": "Casa familiar",
     "location": "A 1500m del centro",
     "description": "Casa luminosa, con cálidos ambientes. 2 plantas, 4 habitaciones, 2 baños, parque y piscina."
+  },
+  {
+    "id": 9,
+    "img": "https://images.unsplash.com/photo-1624254495476-db6cc8b77e98?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+    "category": "Glamping",
+    "title": "Glamping Estilo Florida",
+    "location": "Mendoza",
+    "description": "Dispuestas sobre una plataforma, están completamente amobladas, ofrecen camas reales con lencería de alta calidad, aire acondicionado y calefacción para mantener su carpa a la temperatura perfecta, además de baño privado. En nuestro resort glamping, puedes dormir bajo 5 millones de estrellas, resguardado bajo un dosel de majestuosos robles. Ya sea que su escapada favorita se parezca a un retiro rural, o tenga el espíritu de un guerrero al aire libre, una cosa sí es segura: ¡El glamping es toda una aventura con estilo! ¡Consulte nuestras tarifas ahora para obtener la mejor experiencia de campamento de lujo en el estado del sol!"
+  },
+  {
+    "id": 10,
+    "img": "https://images.unsplash.com/photo-1641569618527-68e26db76db0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
+    "category": "Glamping",
+    "title": "Glamping Hermitage",
+    "location": "A 415m del centro",
+    "description": "Dispuestas sobre una plataforma, están completamente amobladas, ofrecen camas reales con lencería de alta calidad, aire acondicionado y calefacción para mantener su carpa a la temperatura perfecta, además de baño privado. En nuestro resort glamping, puedes dormir bajo 5 millones de estrellas, resguardado bajo un dosel de majestuosos robles. Ya sea que su escapada favorita se parezca a un retiro rural, o tenga el espíritu de un guerrero al aire libre, una cosa sí es segura: ¡El glamping es toda una aventura con estilo! ¡Consulte nuestras tarifas ahora para obtener la mejor experiencia de campamento de lujo en el estado del sol!"
   }
 ]

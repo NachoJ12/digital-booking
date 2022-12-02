@@ -1,0 +1,42 @@
+.checkInContainer {
+  background-color: var(--white-color);
+  padding: 19px 25px;
+  box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  margin-top: 21px;
+  /* max-width: 874px; */ /* chequear cuando mejore el responsive */
+  max-width: none;
+  width: 100%;
+}
+
+.checkInContainer p {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.checkInTime p {
+  font-weight: 500;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.checkInText {
+  display: flex;
+  align-items: center;
+  margin-bottom: 31px;
+}
+
+.checkInText svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 7px;
+  align-self: flex-start;
+}
+
+.selectTimeContainer {
+  max-width: 500px;
+  width: 100%;
+}
+
+@media (min-width: 1333px) {
+}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from './Product.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import {  } from '@fortawesome/free-solid-svg-icons';
 import {
   faStar,
   faHeart,
@@ -27,13 +26,13 @@ const Product = ({ id, imgUrl, category, title, description, location }) => {
           className={style.productFavorite}
           icon={!isFavorite ? faHeartRegular : faHeart}
         />
-        <img className={style.productImage} src={imgUrl} alt={title} />
+        <img className={style.productImage} src={imgUrl[0]?.url} alt={title} />
       </div>
       <div className={style.cardDetails}>
         <div className={style.row1}>
           <div className={style.productInitialContainer}>
             <div className={style.productCategoryContainer}>
-              <p className={style.productCategory}>{category}</p>
+              <p className={style.productCategory}>{category.name}</p>
               <FontAwesomeIcon className={style.productStars} icon={faStar} />
             </div>
             <h5 className={style.productTitle}>{title}</h5>
@@ -47,7 +46,7 @@ const Product = ({ id, imgUrl, category, title, description, location }) => {
 
         <div className={style.productInformation}>
           <p className={style.productLocation}>
-            <FontAwesomeIcon icon={faLocationDot} /> {location} -{' '}
+            <FontAwesomeIcon icon={faLocationDot} /> {location.name} -{' '}
             <Link className={style.linkLocation} href="#a">
               Mostrar en el mapa
             </Link>{' '}
@@ -59,7 +58,6 @@ const Product = ({ id, imgUrl, category, title, description, location }) => {
         </div>
 
         <p className={style.productDescription}>{description}</p>
-        {/* <button className={`btn btn2 w-100`}>Ver detalle</button> */}
         <Link to={`/products/${id}`} className={`btn btn2 w-100`}>
           Ver detalle
         </Link>

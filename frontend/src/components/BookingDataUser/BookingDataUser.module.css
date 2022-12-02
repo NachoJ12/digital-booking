@@ -1,0 +1,43 @@
+.dataUserContainer {
+  background-color: var(--white-color);
+  padding: 18px 18px 39px;
+  box-shadow: 0px 1px 5px rgb(0 0 0 / 15%);
+  border-radius: 5px;
+  margin-top: 15px;
+  max-width: 874px; /* chequear cuando mejore el responsive */
+}
+.dataUserContainer div {
+  max-width: none;
+  width: 100%;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .inputGroup > div {
+  width: 100%;
+} */
+
+@media (min-width: 768px) {
+  .dataUserContainer {
+    max-width: none; /* revisar */
+    width: 100%;
+  }
+
+  /* .inputGroup div {
+    max-width: 500px;
+    width: 100%;
+  } */
+  .inputGroup {
+    flex-direction: row;
+    gap: 12px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .dataUserContainer {
+    padding: 31px 29px 18px;
+  }
+}

@@ -1,0 +1,10 @@
+.descriptionContainer {
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+
+.descriptionContainer h2 {
+  font-size: 24px;
+  padding: 31px 0 15px;
+  color: var(--thirth-color);
+}

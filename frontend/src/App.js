@@ -7,24 +7,34 @@ import SideBar from './components/SideBar/SideBar';
 import SignUp from './components/Forms/SignUp/SignUp';
 import Home from './components/Home/Home';
 import UserContextProvider from './context/UserContext';
-import ProductDetail from './components/ProductDetail/ProductDetail';
+import ProductDetailCointaner from './components/ProductDetailContainer/ProductDetailCointaner';
+import DateRangeProvider from './context/DateRangeContext';
+import ProductBooking from './pages/ProductBooking/ProductBooking';
+import BookingSucces from './components/BookingSuccess/BookingSucces';
 
 function App() {
   return (
     <BrowserRouter>
       <UserContextProvider>
-        <div className="container">
-          <Header />
-          <div className="overlay"></div>
-          <SideBar />
+        <DateRangeProvider>
+          <div className="container">
+            <Header />
+            <div className="overlay"></div>
+            <SideBar />
 
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/products/:id" element={<ProductDetail />} />
-          </Routes>
-        </div>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route
+                path="/products/:id"
+                element={<ProductDetailCointaner />}
+              />
+              <Route path="/product/:id/booking" element={<ProductBooking />} />
+              <Route path="/booking/success" element={<BookingSucces />} />
+            </Routes>
+          </div>
+        </DateRangeProvider>
       </UserContextProvider>
       <Footer />
     </BrowserRouter>

@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+}
+
+.productCategory {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.headerRight {
+  font-size: 20px;
+}
+
+.headerRight a {
+  color: var(--white-color);
+  transition: 300ms ease-in-out;
+}
+
+.headerRight a:hover {
+  color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+  .headerRight {
+    font-size: 23px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .headerRight {
+    font-size: 31px;
+  }
+}

@@ -23,10 +23,19 @@
   font-weight: 700;
   color: var(--thirth-color);
   font-size: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.categoryCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 0.25);
+  cursor: pointer;
 }
 
 .categoryImage {
   width: 100%;
+  height: 218px;
+  object-fit: cover;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }

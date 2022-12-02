@@ -94,6 +94,11 @@
   -webkit-box-orient: vertical;
 }
 
+.productLocation {
+  max-height: 17px;
+  overflow: hidden;
+}
+
 .linkLocation {
   color: var(--primary-color);
   text-transform: uppercase;

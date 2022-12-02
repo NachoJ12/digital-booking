@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import style from './Categories.module.css';
+import baseUrl from '../../utils/baseUrl.json';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/categories')
+    fetch(`${baseUrl.url}/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));

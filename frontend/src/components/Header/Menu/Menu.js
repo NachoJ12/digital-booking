@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import hamburguer from '../../../assets/menu.svg';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { userContext } from '../../../context/UserContext';
 
 import Avatar from '../Avatar/Avatar';
@@ -9,7 +10,10 @@ import style from './Menu.module.css';
 const Menu = () => {
   const userContextResult = useContext(userContext);
 
-  const loggedIn = userContextResult.userLogin;
+  const loggedIn = userContextResult.userJwt;
+
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     const overlay = document.querySelector('.overlay');
@@ -27,22 +31,24 @@ const Menu = () => {
         <button
           className={style.openMenu}
           onClick={toggleMenu}
-          aria-label="Abrir menú"
+          aria-label="Abrir menú de usuario"
         >
-          <span title="Abrir menú hamburguesa" aria-hidden="true">
-            <img src={hamburguer} alt="menu" />
-          </span>
+          <FontAwesomeIcon icon={faBars} />
         </button>
         {/* tablet-desktop */}
         <div className={style.containerRigth}>
           {!loggedIn ? (
             <div className={style.btnGroup}>
-              <Link to="/signup" className="btn btn1">
-                Crear cuenta
-              </Link>
-              <Link to="/login" className="btn btn2">
-                Iniciar sesión
-              </Link>
+              {pathname !== '/signup' && (
+                <Link to="/signup" className="btn btn1">
+                  Crear cuenta
+                </Link>
+              )}
+              {pathname !== '/login' && (
+                <Link to="/login" className="btn btn2">
+                  Iniciar sesión
+                </Link>
+              )}
             </div>
           ) : (
             <>
@@ -50,12 +56,11 @@ const Menu = () => {
                 className={style.closeMenu}
                 onClick={() => {
                   userContextResult.logoutUser();
+                  navigate('/');
                 }}
                 aria-label="Cerrar sesión"
               >
-                <span title="Cerrar sesión" aria-hidden="true">
-                  X
-                </span>
+                <FontAwesomeIcon icon={faXmark} />
               </button>
               <Avatar />
             </>

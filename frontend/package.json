@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "aws s3 sync build/ s3://0521ptc2n2-grupo9-airc2cfronts3",
+    "prod": "npm run build && npm run deploy"
   },
   "eslintConfig": {
     "extends": [

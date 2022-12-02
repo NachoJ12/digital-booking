@@ -6,11 +6,20 @@
   display: block;
   align-self: end;
   margin: 32px 5px 22px 0;
-  background-color: black; /* sacar esto cuando solucionemos el tema del fill de los iconos*/
 }
 
 .socialMenu a {
   margin-left: 17px;
+}
+
+.social svg {
+  font-size: 29px;
+  color: var(--secondary-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.social svg:hover {
+  color: var(--primary-color);
 }
 
 @media screen and (min-width: 768px) {
@@ -22,5 +31,13 @@
   .social a {
     margin-right: 30px;
     max-height: 27px;
+  }
+
+  .social svg {
+    color: var(--white-color);
+  }
+
+  .social svg:hover {
+    color: var(--thirth-color);
   }
 }

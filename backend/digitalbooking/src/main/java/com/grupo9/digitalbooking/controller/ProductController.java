@@ -1,15 +1,22 @@
 package com.grupo9.digitalbooking.controller;
 
+import com.grupo9.digitalbooking.model.Category;
+import com.grupo9.digitalbooking.model.City;
 import com.grupo9.digitalbooking.model.Product;
+import com.grupo9.digitalbooking.response.ApiResponseHandler;
 import com.grupo9.digitalbooking.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin (origins = "*")
 @RestController
 @RequestMapping("/products")
 public class ProductController {
@@ -23,10 +30,19 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> buscarProducto(@PathVariable Integer id) {
+    public ResponseEntity<Object> buscarProducto(@PathVariable Integer id)  {
         Optional<Product> productoBuscado = prodctService.getProductById(id);
-        if(productoBuscado.isPresent()) {
-            return ResponseEntity.ok(productoBuscado.get());
+        if(productoBuscado.isPresent())
+            return ApiResponseHandler.generateResponse("Product data retrieved successfully", HttpStatus.OK, productoBuscado.get());
+
+        return ApiResponseHandler.generateResponseError("Product "+ id + " not found", HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<Product>> searchProductByCategory(@PathVariable Category id) {
+        List<Product> productsSearch = prodctService.getProductsByCategory(id);
+         if(!productsSearch.isEmpty()){
+            return ResponseEntity.ok(productsSearch);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
@@ -57,6 +73,35 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró el producto con ID: " + id);
     }
 
+    @GetMapping("/city/{id}")
+    public ResponseEntity<List<Product>> searchProductByCategory(@PathVariable City id) {
+        List<Product> productsSearch = prodctService.getProductsByCity(id);
+        if(!productsSearch.isEmpty()){
+            return ResponseEntity.ok(productsSearch);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @GetMapping("/dates/{startDate}/{endDate}")
+    public ResponseEntity<List<Product>> searchProductsByRangeDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+        List<Product> productsSearch = prodctService.getProductsByRangeDate(startDate, endDate);
+        if(!productsSearch.isEmpty()){
+            return ResponseEntity.ok(productsSearch);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @GetMapping("/cityAndDates/{cityId}/{startDate}/{endDate}")
+    public ResponseEntity<List<Product>> searchProductsByRangeDate(@PathVariable Integer cityId, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate) {
+        List<Product> productsSearch = prodctService.getProductsByCityAndRangeDate(cityId, startDate, endDate);
+        if(!productsSearch.isEmpty()){
+            return ResponseEntity.ok(productsSearch);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
 }
 

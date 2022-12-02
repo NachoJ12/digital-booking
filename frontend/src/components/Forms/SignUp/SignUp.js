@@ -14,7 +14,7 @@ const SignUp = () => {
   const regularExpressions = {
     nameAndLastName: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letters and spaces can carry accents.
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    password: /^.{7,20}$/, // 7 to 20 digits.
+    password: /^.{7,25}$/, // 7 to 25 digits.
   };
 
   const validateRepeatPassword = () => {

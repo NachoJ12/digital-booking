@@ -5,7 +5,7 @@ import style from './Footer.module.css';
 const Footer = () => {
   return (
     <div className={style.footerContainer}>
-      <p>©2021 Digital Booking</p>
+      <p>©2022 Digital Booking</p>
       <Social />
     </div>
   );

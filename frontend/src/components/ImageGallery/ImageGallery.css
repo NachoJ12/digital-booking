@@ -148,6 +148,11 @@
   .image-gallery-thumbnail {
     width: 148px;
   }
+
+  .image-gallery-thumbnail .image-gallery-thumbnail-image {
+    max-height: 84px;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 473px) {

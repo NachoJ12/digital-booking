@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import ReactImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
+import useWindowSize from '../../hooks/useWindowSize';
 import './ImageGallery.css';
 
 const ImageGallery = ({ images }) => {
-  const [widthSize, setWithSize] = useState(window.innerWidth);
-  const [data, setData] = useState(images);
-  console.log('data', data);
+  const [data, setData] = useState([]);
+  const { width } = useWindowSize();
 
-  let desktop = widthSize > 1333 ? true : false;
+  let desktop = width > 1333 ? true : false;
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize, false);
-  }, [widthSize]);
-
-  console.log(widthSize);
-
-  const handleResize = () => {
-    setWithSize(window.innerWidth);
-  };
-
-  console.log('desktop', desktop);
-
-  /* Revisar como hacer para que el estado del autoplay haga efecto al cambiar el responsive, ya que queda fijo y no se altera el estado interno una vez abierto*/
+    const arrayGallery = [];
+    images.map((dat) => {
+      return arrayGallery.push({ original: dat.url, thumbnail: dat.url });
+    });
+    setData(arrayGallery);
+  }, [images]);
 
   return (
     <div className="containerReactImageGallery">
