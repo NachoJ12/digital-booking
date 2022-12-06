@@ -88,14 +88,15 @@ backend-deploy:
     - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
-    - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
-    - chmod +x start-app.sh
-    - scp start-app.sh ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/ 
+    - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log&
+    # 2>&1 &" > start-app.sh
+   # - chmod +x start-app.sh
+   # - scp start-app.sh ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/ 
   script:
     - echo "Deploying..."
     - scp $BACKEND_PATH/target/*.jar ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/
-    - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
-    - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP '/start-app.sh'
+   # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
+   # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP '/start-app.sh'
     
 frontend-deploy:
     image: python:latest
