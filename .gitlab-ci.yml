@@ -77,7 +77,7 @@ frontend-test:
 
 backend-deploy:
   stage: deploy
-  image: alpine:3.11
+  image: amazonlinux
   extends: .backend
   needs: ["backend-test"]
   before_script:
