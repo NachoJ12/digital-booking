@@ -88,7 +88,7 @@ backend-deploy:
     - touch ~/.ssh/config
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - ssh-keyscan -H $UBUNTU_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
-    - echo "nohup java -jar /home/ubuntu/digitalbooking-1.0.0-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
+    - echo "nohup java -jar /home/ubuntu/digitalbooking-0.0.1-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
     - chmod +x start-app.sh
     - scp start-app.sh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP:/home/ubuntu/ 
   script:
