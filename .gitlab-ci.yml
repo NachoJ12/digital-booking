@@ -50,7 +50,7 @@ frontend-build:
         - echo "Building frontend"
         - cd $FRONTEND_PATH
         - npm i
-        - npm run build
+        - npm run prod
     artifacts:
         paths:
          - $FRONTEND_PATH
