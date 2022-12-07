@@ -48,12 +48,12 @@ frontend-build:
     needs: []
     script: 
         - echo "Building frontend"
-        #- cd frontend/
+        - cd $FRONTEND_PATH
         # - npm i --legacy-peer-deps
-        - npm run prod
-    # artifacts:
-      #  paths:
-       # - $FRONTEND_PATH
+        - npm run build
+    artifacts:
+        paths:
+         - $FRONTEND_PATH
 
 backend-test:
     stage: test
