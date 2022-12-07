@@ -107,4 +107,4 @@ frontend-deploy:
         - pip install awscli
         - aws configure set aws_access_key_id $DH_AWS_ACCESS_KEY_ID
         - aws configure set aws_secret_access_key $DH_AWS_SECRET_ACCESS_KEY
-        - aws s3 sync $FRONTEND_PATH/ s3://$AWS_S3_NAME --delete
+        - aws s3 sync $FRONTEND_PATH/ s3://$AWS_S3_URL_FRONT --delete
