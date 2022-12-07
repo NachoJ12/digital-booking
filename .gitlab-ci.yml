@@ -1,6 +1,6 @@
 variables:
   RULES_CHANGES_PATH: "*/"
-  FRONTEND_PATH: "frontend/build"
+  FRONTEND_PATH: "frontend/"
   BACKEND_PATH: "backend/digitalbooking"
 
 
@@ -48,9 +48,9 @@ frontend-build:
     needs: []
     script: 
         - echo "Building frontend"
-        - cd frontend
+        - cd frontend/
         # - npm i --legacy-peer-deps
-        - npm run build
+        - npm run prod
     artifacts:
         paths:
         - $FRONTEND_PATH
@@ -97,16 +97,3 @@ backend-deploy:
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP '/home/ubuntu/start-app.sh'
     
-frontend-deploy:
-    image: python:latest
-    stage: deploy
-    extends: .frontend
-    needs: ["frontend-test"]
-    script:
-        - echo "Deploying frontend"
-        - pip install awscli
-        - aws s3 rm --recursive s3://$AWS_S3_URL_FRONT/
-        - aws s3 cp ./$FRONTEND_PATH s3://$AWS_S3_URL_FRONT/ --recursive
-        - aws configure set aws_access_key_id $DH_AWS_ACCESS_KEY_ID
-        - aws configure set aws_secret_access_key $DH_AWS_SECRET_ACCESS_KEY
-        - aws s3 sync $FRONTEND_PATH/ s3://$AWS_S3_URL_FRONT --delete
