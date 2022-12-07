@@ -49,8 +49,8 @@ frontend-build:
     script: 
         - echo "Building frontend"
         - cd frontend/public
-        - npm i --legacy-peer-deps
-        - npm run build
+        #- npm i --legacy-peer-deps
+        - npm run prod
     artifacts:
         paths:
         - $FRONTEND_PATH
