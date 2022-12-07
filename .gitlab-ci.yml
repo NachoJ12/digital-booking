@@ -49,7 +49,7 @@ frontend-build:
     script: 
         - echo "Building frontend"
         - cd $FRONTEND_PATH
-        # - npm i --legacy-peer-deps
+        - npm i
         - npm run build
     artifacts:
         paths:
