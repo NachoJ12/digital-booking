@@ -1,6 +1,6 @@
 variables:
   RULES_CHANGES_PATH: "*/"
-  FRONTEND_PATH: "frontend/"
+  FRONTEND_PATH: "frontend/digital-booking"
   BACKEND_PATH: "backend/digitalbooking"
 
 
@@ -34,7 +34,7 @@ backend-build:
     extends: .backend
     needs: []
     script:
-        - echo "Creando Artefacto"
+        - echo "Building backend"
         - "cd backend/digitalbooking"
         - "mvn clean package"
     artifacts: 
@@ -47,7 +47,7 @@ frontend-build:
     extends: .frontend
     needs: []
     script: 
-        - echo "Creando el Frontend"
+        - echo "Building frontend"
         - cd $FRONTEND_PATH
         - npm i --legacy-peer-deps
         - npm run build
@@ -73,32 +73,29 @@ frontend-test:
         - echo "Testing frontend"
     artifacts:
         paths:
-        - $FRONTEND_PATH/Testing/
+        - $FRONTEND_PATH/dist/
 
 backend-deploy:
   stage: deploy
-  image: amazonlinux
+  image: alpine:3.11
   extends: .backend
   needs: ["backend-test"]
   before_script:
-   # - yum update 
-    #&& apk add openssh-client bash
-    #- mkdir -p ~/.ssh
-    #- eval $(ssh-agent -s)
-    #- echo "$EC2_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - ls
-   # - touch ~/.ssh/config
-    #- echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    # - ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
-    - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log&
-    # 2>&1 &" > start-app.sh
-   # - chmod +x start-app.sh
-   # - scp start-app.sh ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/ 
+    - apk update && apk add openssh-client bash
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "$UBUNTU_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - touch ~/.ssh/config
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - ssh-keyscan -H $UBUNTU_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
+    - echo "nohup java -jar /home/ubuntu/aplication-0.0.1-SNAPSHOT.jar > output.log 2>&1 &" > start-app.sh
+    - chmod +x start-app.sh
+    - scp start-app.sh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP:/home/ubuntu/ 
   script:
     - echo "Deploying..."
-    - scp $BACKEND_PATH/target/*.jar ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/home/ec2-user
-   # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
-   # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP '/start-app.sh'
+    - scp $BACKEND_PATH/target/*.jar ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP:/home/ubuntu/
+    - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
+    - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP '/home/ubuntu/start-app.sh'
     
 frontend-deploy:
     image: python:latest
@@ -110,4 +107,4 @@ frontend-deploy:
         - pip install awscli
         - aws configure set aws_acces_key_id $DH_AWS_ACCESS_KEY_ID
         - aws configure set aws_secret_acces_key $DH_AWS_SECRET_ACCESS_KEY
-        - aws s3 sync $FRONTEND_PATH/dist s3://$AWS_S3_URL_FRONT --delete
+        - aws s3 sync $FRONTEND_PATH/dist s3://$AWS_S3_NAME --delete
