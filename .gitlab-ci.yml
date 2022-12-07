@@ -81,7 +81,7 @@ backend-deploy:
   extends: .backend
   needs: ["backend-test"]
   before_script:
-    - sudo yum update 
+    - yum update 
     #&& apk add openssh-client bash
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
