@@ -50,7 +50,7 @@ frontend-build:
         - echo "Building frontend"
         - cd frontend/public
         #- npm i --legacy-peer-deps
-        - npm run prod
+        - npm run build
     artifacts:
         paths:
         - $FRONTEND_PATH
@@ -107,6 +107,6 @@ frontend-deploy:
         - pip install awscli
         - aws s3 rm --recursive s3://$AWS_S3_URL_FRONT/
         - aws s3 cp ./site s3://$AWS_S3_URL_FRONT/ --recursive
-        #- aws configure set aws_access_key_id $DH_AWS_ACCESS_KEY_ID
-        #- aws configure set aws_secret_access_key $DH_AWS_SECRET_ACCESS_KEY
+        - aws configure set aws_access_key_id $DH_AWS_ACCESS_KEY_ID
+        - aws configure set aws_secret_access_key $DH_AWS_SECRET_ACCESS_KEY
         - aws s3 sync $FRONTEND_PATH/ s3://$AWS_S3_URL_FRONT --delete
