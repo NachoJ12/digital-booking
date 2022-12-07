@@ -48,7 +48,7 @@ frontend-build:
     needs: []
     script: 
         - echo "Building frontend"
-        - cd $FRONTEND_PATH
+        - cd frontend/public
         - npm i --legacy-peer-deps
         - npm run build
     artifacts:
