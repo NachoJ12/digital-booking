@@ -89,7 +89,7 @@ backend-deploy:
     - ls
    # - touch ~/.ssh/config
     #- echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    -# ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
+    # - ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
     - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log&
     # 2>&1 &" > start-app.sh
    # - chmod +x start-app.sh
