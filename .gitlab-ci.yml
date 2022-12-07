@@ -48,12 +48,12 @@ frontend-build:
     needs: []
     script: 
         - echo "Building frontend"
-        - cd frontend/
+        #- cd frontend/
         # - npm i --legacy-peer-deps
         - npm run prod
-    artifacts:
-        paths:
-        - $FRONTEND_PATH
+    # artifacts:
+      #  paths:
+       # - $FRONTEND_PATH
 
 backend-test:
     stage: test
@@ -65,15 +65,7 @@ backend-test:
         paths:
         - $BACKEND_PATH/target/*.jar
 
-frontend-test:
-    stage: test
-    extends: .frontend
-    needs: ["frontend-build"]
-    script:
-        - echo "Testing frontend"
-    artifacts:
-        paths:
-        - $FRONTEND_PATH/
+
 
 backend-deploy:
   stage: deploy
