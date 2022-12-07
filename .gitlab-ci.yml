@@ -81,15 +81,15 @@ backend-deploy:
   extends: .backend
   needs: ["backend-test"]
   before_script:
-    - yum update 
+   # - yum update 
     #&& apk add openssh-client bash
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - echo "$EC2_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    #- mkdir -p ~/.ssh
+    #- eval $(ssh-agent -s)
+    #- echo "$EC2_SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - ls
-    - touch ~/.ssh/config
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
+   # - touch ~/.ssh/config
+    #- echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    -# ssh-keyscan -H $EC2_DEPLOY_SERVER_BA_IP >> ~/.ssh/known_hosts
     - echo "nohup java -jar /digitalbooking-0.0.1-SNAPSHOT.jar > output.log&
     # 2>&1 &" > start-app.sh
    # - chmod +x start-app.sh
