@@ -1,6 +1,6 @@
 variables:
   RULES_CHANGES_PATH: "*/"
-  FRONTEND_PATH: "frontend/"
+  FRONTEND_PATH: "frontend/public"
   BACKEND_PATH: "backend/digitalbooking"
 
 
@@ -105,6 +105,6 @@ frontend-deploy:
     script:
         - echo "Deploying frontend"
         - pip install awscli
-        - aws configure set aws_acces_key_id $DH_AWS_ACCESS_KEY_ID
-        - aws configure set aws_secret_acces_key $DH_AWS_SECRET_ACCESS_KEY
+        - aws configure set aws_access_key_id $DH_AWS_ACCESS_KEY_ID
+        - aws configure set aws_secret_access_key $DH_AWS_SECRET_ACCESS_KEY
         - aws s3 sync $FRONTEND_PATH/ s3://$AWS_S3_NAME --delete
