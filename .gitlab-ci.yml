@@ -96,7 +96,7 @@ backend-deploy:
    # - scp start-app.sh ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/ 
   script:
     - echo "Deploying..."
-    - scp $BACKEND_PATH/target/*.jar ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/
+    - scp $BACKEND_PATH/target/*.jar ec2-user@$EC2_DEPLOY_SERVER_BA_IP:/home/ec2-user
    # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
    # - ssh ec2-user@$EC2_DEPLOY_SERVER_BA_IP '/start-app.sh'
     
