@@ -1,6 +1,6 @@
 variables:
   RULES_CHANGES_PATH: "*/"
-  FRONTEND_PATH: "frontend/"
+  FRONTEND_PATH: "frontend"
   BACKEND_PATH: "backend/digitalbooking"
 
 
@@ -48,7 +48,7 @@ frontend-build:
     needs: []
     script: 
         - echo "Building frontend"
-        - cd $FRONTEND_PATHpublic
+        - cd frontend/public
         - npm i --legacy-peer-deps
         - npm run build
     artifacts:
