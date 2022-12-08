@@ -67,7 +67,15 @@ backend-test:
         paths:
         - $BACKEND_PATH/target/*.jar
 
-
+frontend-test: 
+  stage: test 
+  extends: .frontend  
+  needs: ["frontend-build"]
+  script:
+    - echo "Test of Frontend..."
+  artifacts:
+    paths:
+    - frontend/dist
 
 backend-deploy:
   stage: deploy
@@ -91,7 +99,7 @@ backend-deploy:
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP '/home/ubuntu/start-app.sh'
 
-    frontend-deploy: 
+frontend-deploy: 
   image: python:latest
   stage: deploy
   extends: .frontend
