@@ -42,18 +42,20 @@ backend-build:
         - $BACKEND_PATH/target/*.jar
 
 frontend-build:
-    image: node:16.13.1-alpine3.15
+    image: node:16.14.2-alpine
     stage: build
     extends: .frontend
     needs: []
     script: 
         - echo "Building frontend"
-        - cd frontend/public
-        - npm i --legacy-peer-deps
-        - npm run build
+        - cd frontend
+        - npm install
+        - CI=false npm run build
+        - echo "Compile Complete!!!"
+    
     artifacts:
         paths:
-         - $FRONTEND_PATH
+         - frontend/dist
 
 backend-test:
     stage: test
@@ -88,4 +90,17 @@ backend-deploy:
     - scp $BACKEND_PATH/target/*.jar ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP:/home/ubuntu/
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP 'pkill java|| echo "No hay proceso java corriendo"'
     - ssh ubuntu@$UBUNTU_DEPLOY_SERVER_BA_IP '/home/ubuntu/start-app.sh'
+
+    frontend-deploy: 
+  image: python:latest
+  stage: deploy
+  extends: .frontend
+  needs: ["frontend-test"]
+  script:
+    - echo "Deploying into Front..."
+    - pip install awscli
+    - aws --version
+    - aws configure set aws_acces_key_id $AWS_ACCESS_KEY_ID
+    - aws configure set aws_secret_acces_key $AWS_SECRET_ACCESS_KEY
+    - aws s3 sync frontend/dist/ s3://airc2c.com --delete
     
