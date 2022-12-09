@@ -41,6 +41,11 @@ input:focus {
   color: rgb(84 87 118 / 75%);
 }
 
+.input::placeholder {
+  color: #bebebe;
+  font-weight: 500;
+}
+
 .inputError {
   border: 1px solid red;
   background: #ffe1e1;

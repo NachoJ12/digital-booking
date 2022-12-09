@@ -11,6 +11,9 @@ import ProductDetailCointaner from './components/ProductDetailContainer/ProductD
 import DateRangeProvider from './context/DateRangeContext';
 import ProductBooking from './pages/ProductBooking/ProductBooking';
 import BookingSucces from './components/BookingSuccess/BookingSucces';
+import NotFound from './pages/NotFound/NotFound';
+import Administration from './pages/Administration/Administration';
+import NewProductSuccessful from './components/NewProductSuccessful/NewProductSuccessful';
 
 function App() {
   return (
@@ -32,6 +35,12 @@ function App() {
               />
               <Route path="/product/:id/booking" element={<ProductBooking />} />
               <Route path="/booking/success" element={<BookingSucces />} />
+              <Route path="/administration" element={<Administration />} />
+              <Route
+                path="/successful-new-product"
+                element={<NewProductSuccessful />}
+              />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </DateRangeProvider>

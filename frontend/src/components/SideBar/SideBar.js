@@ -11,6 +11,7 @@ import useWindowSize from '../../hooks/useWindowSize';
 const SideBar = () => {
   const userContextResult = useContext(userContext);
   const loggedIn = userContextResult.userJwt;
+  const roleType = userContextResult?.userInfo?.role;
 
   const { pathname } = useLocation();
   const { width } = useWindowSize();
@@ -46,7 +47,7 @@ const SideBar = () => {
       </div>
       {/* Menu Body */}
       <div className={style.menuBody}>
-        {!loggedIn && (
+        {!loggedIn ? (
           <ul>
             {pathname !== '/signup' && (
               <li>
@@ -63,6 +64,16 @@ const SideBar = () => {
                 <Link to="/login">Iniciar sesión</Link>
               </li>
             )}
+          </ul>
+        ) : (
+          <ul>
+            {loggedIn &&
+              roleType === 'ADMIN' &&
+              pathname !== '/administration' && (
+                <li>
+                  <Link to="/administration">Administración</Link>
+                </li>
+              )}
           </ul>
         )}
       </div>

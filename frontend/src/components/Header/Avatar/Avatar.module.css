@@ -27,6 +27,24 @@
   color: var(--white-color);
 }
 
+.containerRole {
+  display: none;
+}
+
+.textRole {
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+.lineOrangeVertical {
+  display: block;
+  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  /* width: 100%; */
+  height: 41px;
+  margin-bottom: 7px;
+}
+
 @media (min-width: 768px) {
   .container {
     flex-direction: row;
@@ -34,6 +52,14 @@
     gap: 0.625rem;
     color: var(--primary-color);
   }
+
+  .containerRole {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-right: 14px;
+  }
+
   .initialsContainer {
     background-color: var(--secondary-color);
     color: var(--white-color);

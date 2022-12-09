@@ -1,6 +1,7 @@
 package com.grupo9.digitalbooking.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,17 +31,34 @@ public class Product {
     @JoinColumn(name = "city_id", referencedColumnName = "id")
     private City city;
 
-    @OneToMany (mappedBy = "product")
+    @OneToMany (mappedBy = "product", cascade = CascadeType.ALL)
+    //@JsonIgnore
     private List<Image> image;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @Column(name = "site_policies")
+    private String policiesSite;
+    @Column(name = "hse_policies" )
+    private String policiesSecurityAndHealth;
+    @Column(name= "cancellation_policies")
+    private String policiesCancellation;
+
+    //@OneToMany (mappedBy = "product", cascade = CascadeType.ALL)
+    //@JsonIgnore
+    //private List<ProductAttribute> attributes;
+
+    @ManyToMany(cascade={CascadeType.MERGE})
+    @JoinTable(name="product_spec", joinColumns=@JoinColumn(name="id_product"),
+            inverseJoinColumns=@JoinColumn(name="id_spec"))
+    private List <ProductAttribute> attributes;
+
     public Product() {
     }
 
-    public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, List<Image> image, Category category) {
+   /* public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -52,8 +70,44 @@ public class Product {
         this.area = area;
         this.average_score = average_score;
         this.city = city;
-        this.image = image;
         this.category = category;
+    }*/
+
+    /*public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, Category category, String policiesSite, String policiesSecurityAndHealth, String policiesCancellation) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.short_description = short_description;
+        this.active = active;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.area = area;
+        this.average_score = average_score;
+        this.city = city;
+        this.category = category;
+        this.policiesSite = policiesSite;
+        this.policiesSecurityAndHealth = policiesSecurityAndHealth;
+        this.policiesCancellation = policiesCancellation;
+    }*/
+
+    public Product(Integer id, String name, String description, String short_description, boolean active, String address, String latitude, String longitude, String area, Double average_score, City city, Category category, String policiesSite, String policiesSecurityAndHealth, String policiesCancellation, List<ProductAttribute> attributes) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.short_description = short_description;
+        this.active = active;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.area = area;
+        this.average_score = average_score;
+        this.city = city;
+        this.category = category;
+        this.policiesSite = policiesSite;
+        this.policiesSecurityAndHealth = policiesSecurityAndHealth;
+        this.policiesCancellation = policiesCancellation;
+        this.attributes = attributes;
     }
 
     public Integer getId() {
@@ -157,5 +211,37 @@ public class Product {
 
     public void setImage(List<Image> image) {
         this.image = image;
+    }
+
+    public String getPoliciesSite() {
+        return policiesSite;
+    }
+
+    public void setPoliciesSite(String policiesSite) {
+        this.policiesSite = policiesSite;
+    }
+
+    public String getPoliciesSecurityAndHealth() {
+        return policiesSecurityAndHealth;
+    }
+
+    public void setPoliciesSecurityAndHealth(String policiesSecurityAndHealth) {
+        this.policiesSecurityAndHealth = policiesSecurityAndHealth;
+    }
+
+    public String getPoliciesCancellation() {
+        return policiesCancellation;
+    }
+
+    public void setPoliciesCancellation(String policiesCancellation) {
+        this.policiesCancellation = policiesCancellation;
+    }
+
+    public List<ProductAttribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<ProductAttribute> attributes) {
+        this.attributes = attributes;
     }
 }

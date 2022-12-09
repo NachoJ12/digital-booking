@@ -6,7 +6,6 @@ import com.grupo9.digitalbooking.model.User;
 import com.grupo9.digitalbooking.model.dto.UserDto;
 import com.grupo9.digitalbooking.repository.RoleRepository;
 import com.grupo9.digitalbooking.repository.UserRepository;
-import com.grupo9.digitalbooking.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,11 +31,6 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Autowired
     ObjectMapper mapper;
-
-    /*public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }*/
 
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -80,35 +74,16 @@ public class UserServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        //User user = userRepository.findByUsername(username).get();
         User user = userRepository.findByEmail(email).get();
         String role = user.getRole().getName();
-        System.out.println(role);
+        //System.out.println(role);
 
         //User user = userRepository.findByUsername(username)
         //.orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
-        //String rol = user.getRoles().toString();
-
-        /*String rol = user.get().getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .toList().toString();*/
-        //List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        //authorities.add(new SimpleGrantedAuthority(rol));
-
-        /*List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName()))
-                .collect(Collectors.toList());
-        System.out.println(authorities); // Revisar si esto quedo bien*/
-
-        /*String role = user.getRoles().getName();
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        authorities.add(new SimpleGrantedAuthority(role));*/
-
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         authorities.add(new SimpleGrantedAuthority(role));
-        System.out.println(authorities);
-
+        //System.out.println(authorities);
 
         // tuve que usar todo el import completo por una cuestion de que se me importaban dos clases con el mismo nombre (User)
         return new org.springframework.security.core.userdetails.User(email, user.getPassword(), true, true, true, true, authorities);

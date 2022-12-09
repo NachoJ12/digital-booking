@@ -56,8 +56,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .antMatchers("/authenticate", "/products", "/products/**", "/cities", "/cities/**", "/categories").permitAll()
                 .antMatchers("/users/create").permitAll()
+                //.antMatchers("/attributes/**").permitAll() /* PROVISORIO PARA PRUEBAS */
+                //.antMatchers("/images/**").permitAll() /* PROVISORIO PARA PRUEBAS */
                 //.antMatchers("/reservations/**").permitAll() /* PROVISORIO PARA PRUEBAS */
                 .antMatchers("/reservations/**").hasAuthority("USER") /* Funciona */
+                .antMatchers("/attributes/**").hasAuthority("ADMIN")
+                .antMatchers("/images/**").hasAuthority("ADMIN")
+
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
