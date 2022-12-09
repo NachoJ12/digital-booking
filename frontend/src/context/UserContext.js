@@ -23,6 +23,7 @@ const UserContextProvider = (props) => {
         lastName: user.lastName,
         city: user.city,
         redirect: user.redirect || false,
+        role: user.role,
       })
     );
   };

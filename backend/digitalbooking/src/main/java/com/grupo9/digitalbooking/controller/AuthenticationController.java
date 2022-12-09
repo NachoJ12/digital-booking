@@ -1,5 +1,6 @@
 package com.grupo9.digitalbooking.controller;
 
+import com.grupo9.digitalbooking.exception.AuthenticationException;
 import com.grupo9.digitalbooking.model.dto.AuthenticationDtoRequest;
 import com.grupo9.digitalbooking.model.dto.AuthenticationDtoResponse;
 import com.grupo9.digitalbooking.security.jwt.JwtUtil;
@@ -27,11 +28,11 @@ public class AuthenticationController {
 
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationDtoRequest authenticationRequest) throws Exception{
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationDtoRequest authenticationRequest) throws AuthenticationException {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword()));
         }catch (BadCredentialsException e) {
-            throw new Exception("Incorrect", e);
+            throw new AuthenticationException("Incorrect or invalid credentials");
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);

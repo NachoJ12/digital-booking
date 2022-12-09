@@ -20,5 +20,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "select P.* from product P where p.city_id = ?1 and P.id not in (select distinct R.product_id from reservation R where (R.checkout_date >= ?2 and R.check_in_date <= ?3));", nativeQuery = true)
     List<Product> getByCityAndRangeDate(Integer city_id, LocalDate check_in_date, LocalDate check_out_date);
+    @Query(value = "SELECT * FROM products ORDER BY RAND() LIMIT 6", nativeQuery = true)
+    List<Product> getRandomProduct();
 }
 

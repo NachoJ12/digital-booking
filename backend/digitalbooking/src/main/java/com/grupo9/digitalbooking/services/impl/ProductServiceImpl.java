@@ -59,4 +59,8 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProductsByCityAndRangeDate(Integer city_id, LocalDate check_in_date, LocalDate check_out_date) {
         return productRepository.getByCityAndRangeDate(city_id, check_in_date,check_out_date);
     }
+    @Override
+    public List<Product> getRandomProduct() {
+        return productRepository.getRandomProduct();
+    }
 }

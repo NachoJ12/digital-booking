@@ -102,7 +102,10 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
-
+    @GetMapping("findAll/random")
+    public ResponseEntity<List<Product>> findAllRandom(){
+        return ResponseEntity.ok(prodctService.getRandomProduct());
+    }
 }
 
 

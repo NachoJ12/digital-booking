@@ -1,0 +1,18 @@
+.container {
+  background: var(--light-grey-color);
+}
+.container section {
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  .container > section {
+    padding: 17px 33px 15px 31px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .container > section {
+    padding: 17px 49px 15px 43px;
+  }
+}

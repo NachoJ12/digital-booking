@@ -1,0 +1,231 @@
+.container {
+  padding-bottom: 30px;
+}
+
+.container > h2 {
+  padding: 25px 9px 17px;
+}
+
+.formProduct {
+  background-color: var(--white-color);
+  padding-bottom: 53px; /* Momentaneo revisar */
+  border: 1px solid #dfe4ea;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding-top: 24px;
+}
+
+.formProduct input {
+  font-size: 12px;
+  padding: 0 12px;
+}
+
+.formProduct section h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--thirth-color);
+}
+
+/* .initialDataProperty > div {
+  width: 100%;
+} */
+
+.doubleProperty > div {
+  width: 100%;
+}
+
+.initialDataProperty > div > textarea {
+  width: 100%;
+  height: 235px;
+}
+
+.containerAttributes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.containerPolicies div > textarea {
+  width: 100%;
+}
+
+.containerPolicies {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.subContainerPolicies {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.containerImages {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.containerInput,
+.containerDoubleInput {
+  padding: 21px 18px;
+  background-color: rgb(190 190 190 / 10%);
+  display: flex;
+  gap: 8px;
+  border-radius: 5px;
+  /* margin-bottom: 14px; */
+}
+
+/* Para pisar el height predeterminado del componente Input que está en 81px - pisar el width por px*/
+.containerInput > div {
+  height: fit-content;
+  width: 100%;
+}
+
+.containerDoubleInput {
+  align-items: center;
+}
+
+.containerDoubleInput > div {
+  width: 100%;
+}
+
+.containerDoubleInput > div > div {
+  width: 100%;
+}
+
+.containerDoubleInput .btn {
+  margin-top: 0px;
+}
+
+/* .doubleInput {
+} */
+
+/* .doubleInput div {
+ //max-width: fit-content; 
+  display: flex;
+  flex-direction: column;
+} */
+
+.btn {
+  width: 100%;
+  max-width: 40px;
+  height: 40px;
+  margin-top: 8px;
+  border: none;
+  border-radius: 5px;
+  color: var(--white-color);
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
+.btn svg {
+  font-size: 30px;
+}
+
+.btnPlus {
+  background-color: var(--primary-color);
+}
+
+.btnPlus:hover {
+  background-color: var(--primary-color-hover);
+}
+
+.btnDelete {
+  background-color: var(--secondary-color);
+}
+
+.btnDelete:hover {
+  background-color: var(--thirth-color);
+}
+
+/* MOMENTANEO DESPUES ACOMODAR MEJOR */
+.btnSubmit {
+  width: 100%;
+  max-width: 358px;
+  margin: 20px auto 0;
+}
+
+/* Prueba select city */
+/* .selectCityInput p {
+  font-weight: 400;
+} */
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 30px 60px;
+  }
+
+  .container > h2 {
+    padding: 38px 0px 13px;
+  }
+
+  .formProduct {
+    border-radius: 8px;
+    padding: 33px 15px 53px;
+  }
+
+  .formProduct section h2 {
+    font-size: 20px;
+  }
+
+  .initialDataProperty > div > textarea {
+    height: 148px;
+  }
+
+  .doubleProperty {
+    display: flex;
+    gap: 18px;
+  }
+
+  .containerAttributes {
+    gap: 17px;
+  }
+
+  .subContainerPolicies {
+    gap: 25px;
+    border: 1px solid #dfe4ea;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    padding: 25px 29px 37px;
+    border-radius: 5px;
+  }
+}
+
+@media (min-width: 1333px) {
+  .container {
+    padding: 0 40px 100px;
+  }
+
+  .initialDataProperty > div > textarea {
+    height: 120px;
+  }
+
+  .doubleProperty {
+    gap: 33px;
+  }
+
+  .containerAttributes {
+    gap: 13px;
+  }
+
+  .subContainerPolicies {
+    flex-direction: row;
+    gap: 36px;
+    padding: 20px 27px 30px;
+  }
+  .subContainerPolicies > div {
+    width: 100%;
+  }
+
+  .containerAttributes .containerDoubleInput > div {
+    width: 100%;
+    display: flex;
+    gap: 12px;
+  }
+  .containerAttributes .containerDoubleInput > div > div:nth-child(1) {
+    flex: 1;
+  }
+  .containerAttributes .containerDoubleInput > div > div:nth-child(2) {
+    flex: 0.4;
+  }
+}
