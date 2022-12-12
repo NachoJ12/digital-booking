@@ -15,6 +15,14 @@ const ProductList = ({ products }) => {
           title={product.name}
           description={product.description}
           location={product.city}
+          address={product.address}
+          attributes={product.attributes}
+          latitude={product.latitude}
+          longitude={product.longitude}
+          policiesSite={product.policiesSite}
+          policiesSecurityAndHealth={product.policiesSecurityAndHealth}
+          policiesCancellation={product.policiesCancellation}
+          averageScore={product.average_score}
         />
       ))}
     </div>

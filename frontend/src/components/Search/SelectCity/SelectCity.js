@@ -1,13 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import style from './SelectCity.module.css';
 import baseUrl from '../../../utils/baseUrl.json';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 
 const SelectCity = ({ getCity }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cities, setCities] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+
+  /* */
+  const ref = useRef();
+  useOnClickOutside(ref, () => setIsOpen(false));
+  /* */
 
   const toggling = () => setIsOpen(!isOpen);
 
@@ -30,7 +36,7 @@ const SelectCity = ({ getCity }) => {
     : '¿A dónde vamos?';
 
   return (
-    <div className={style.selectBox}>
+    <div ref={ref} className={style.selectBox}>
       {/* select */}
       <div className={style.dropDownHeader} onClick={toggling}>
         {/* selectContent*/}
