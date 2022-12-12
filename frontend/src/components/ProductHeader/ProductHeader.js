@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import style from './ProductHeader.module.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import baseUrl from '../../utils/baseUrl.json';
 
 const ProductHeader = () => {
@@ -11,6 +11,7 @@ const ProductHeader = () => {
     category: { name: '' },
   });
   const { id } = useParams();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     fetch(`${baseUrl.url}/products/${id}`)
@@ -22,6 +23,9 @@ const ProductHeader = () => {
   // console.log(productDataHeader);
   // console.log(id);
 
+  const backUrl =
+    pathname === `/product/${id}/booking` ? `/products/${id}` : '/';
+
   return (
     <section className={style.header}>
       <div className={style.headerLeft}>
@@ -31,7 +35,7 @@ const ProductHeader = () => {
         <h1>{productDataHeader.name}</h1>
       </div>
       <div className={style.headerRight}>
-        <Link to="/">
+        <Link to={backUrl}>
           <FontAwesomeIcon icon={faChevronLeft} />
         </Link>
       </div>

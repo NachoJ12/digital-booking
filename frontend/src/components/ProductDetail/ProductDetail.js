@@ -21,6 +21,14 @@ const ProductDetail = ({
   city,
   image: images,
   category,
+  address,
+  attributes,
+  latitude,
+  longitude,
+  policiesSite,
+  policiesSecurityAndHealth,
+  policiesCancellation,
+  averageScore,
 }) => {
   const [stateModal, setStateModal] = useState(false);
   const { width } = useWindowSize();
@@ -68,7 +76,7 @@ const ProductDetail = ({
       </section>
 
       <ProductDescription {...{ name, description }} />
-      <ProductFeatures />
+      <ProductFeatures {...{ attributes }} />
       {/* Calendario */}
       <section className={style.availableDatesContainer}>
         <h2>Fechas disponibles</h2>
@@ -92,7 +100,13 @@ const ProductDetail = ({
           </div>
         </div>
       </section>
-      <ProductPolicies />
+      <ProductPolicies
+        policies={{
+          policiesSite,
+          policiesSecurityAndHealth,
+          policiesCancellation,
+        }}
+      />
       {desktop && (
         <Modal
           state={stateModal}

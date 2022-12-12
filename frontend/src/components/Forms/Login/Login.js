@@ -101,7 +101,7 @@ const Login = () => {
             type="password"
             id="password"
             name="password"
-            error="La contraseña debe tener entre 6 y 15 caracteres"
+            error="La contraseña debe tener entre 7 y 25 caracteres"
             regex={regularExpressions.password}
           />
           {isFormValid === false && (

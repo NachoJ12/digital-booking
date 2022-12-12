@@ -1,6 +1,7 @@
 package com.grupo9.digitalbooking.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.grupo9.digitalbooking.exception.DuplicatedValueException;
 import com.grupo9.digitalbooking.model.Role;
 import com.grupo9.digitalbooking.model.User;
 import com.grupo9.digitalbooking.model.dto.UserDto;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 
 @Service
@@ -50,7 +52,11 @@ public class UserServiceImpl implements UserDetailsService {
     //@Override
     public Optional<User> getUserById(Integer id) { return userRepository.findById(id);}
 
-    public User saveUser(UserDto userDto){
+    public User saveUser(UserDto userDto) throws DuplicatedValueException {
+        Optional<User> existUser = userRepository.findByEmail(userDto.getEmail());
+        if(existUser.isPresent()) {
+            throw new DuplicatedValueException("Este email ya se encuentra en uso");
+        }
         Role roleUser = roleRepository.findById(userDto.getRole().getId()).get();
         userDto.setRole(roleUser);
         userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));

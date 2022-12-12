@@ -1,5 +1,6 @@
 package com.grupo9.digitalbooking.controller;
 
+import com.grupo9.digitalbooking.exception.DuplicatedValueException;
 import com.grupo9.digitalbooking.model.User;
 import com.grupo9.digitalbooking.model.dto.UserDto;
 import com.grupo9.digitalbooking.response.ApiResponseHandler;
@@ -44,7 +45,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Object> createUser(@RequestBody UserDto userDto){
+    public ResponseEntity<Object> createUser(@RequestBody UserDto userDto) throws DuplicatedValueException {
         return ApiResponseHandler.generateResponse("User data save successfully", HttpStatus.OK, userService.saveUser(userDto));
     }
 
