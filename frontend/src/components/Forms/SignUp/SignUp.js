@@ -5,6 +5,7 @@ import baseUrl from '../../../utils/baseUrl.json';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { userContext } from '../../../context/UserContext';
+import Spinner from '../../Spinner/Spinner';
 
 const SignUp = () => {
   const [name, setName] = useState({ value: '', valid: null });
@@ -15,6 +16,7 @@ const SignUp = () => {
 
   const [isFormValid, setIsFormValid] = useState(null);
   const [msgError, setMsgError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const { loginUser } = useContext(userContext);
 
@@ -92,6 +94,7 @@ const SignUp = () => {
     setIsFormValid(true);
 
     if (validateForm()) {
+      setIsLoading(true);
       const data = {
         name: name.value,
         lastName: lastName.value,
@@ -130,11 +133,13 @@ const SignUp = () => {
               })
                 .then((res) => res.json())
                 .then((data) => {
+                  setIsLoading(false);
                   loginUser({ ...data, redirect: false });
                   navigate('/');
                 })
                 .catch((err) => {
                   setIsFormValid(false);
+                  setIsLoading(false);
                   setMsgError(
                     'La cuenta se ha creado exitosamente, pero hay un error al intentar loguearse.'
                   );
@@ -142,6 +147,7 @@ const SignUp = () => {
                 });
             } else {
               setIsFormValid(false);
+              setIsLoading(false);
               setMsgError(
                 'Lamentablemente no ha podido registrarse. Por favor intente más tarde'
               );
@@ -171,85 +177,89 @@ const SignUp = () => {
 
   return (
     <div className={style.containerForms}>
-      <form
-        className={style.form}
-        onSubmit={handleSubmit}
-        onChange={validateForm}
-      >
-        <h1 className={style.titleForm}>Crear cuenta</h1>
-        <div>
-          <div className={style.inputGroup}>
-            <Input
-              state={name}
-              changeState={setName}
-              label="Nombre"
-              type="text"
-              id="name"
-              name="name"
-              error="Sólo están permitidas letras y espacios"
-              regex={regularExpressions.nameAndLastName}
-            />
-            <Input
-              state={lastName}
-              changeState={setLastName}
-              label="Apellido"
-              type="text"
-              id="lastName"
-              name="lastName"
-              error="Sólo están permitidas letras y espacios"
-              regex={regularExpressions.nameAndLastName}
-            />
-          </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <form
+          className={style.form}
+          onSubmit={handleSubmit}
+          onChange={validateForm}
+        >
+          <h1 className={style.titleForm}>Crear cuenta</h1>
+          <div>
+            <div className={style.inputGroup}>
+              <Input
+                state={name}
+                changeState={setName}
+                label="Nombre"
+                type="text"
+                id="name"
+                name="name"
+                error="Sólo están permitidas letras y espacios"
+                regex={regularExpressions.nameAndLastName}
+              />
+              <Input
+                state={lastName}
+                changeState={setLastName}
+                label="Apellido"
+                type="text"
+                id="lastName"
+                name="lastName"
+                error="Sólo están permitidas letras y espacios"
+                regex={regularExpressions.nameAndLastName}
+              />
+            </div>
 
-          <Input
-            state={email}
-            changeState={setEmail}
-            label="Correo electrónico"
-            type="email"
-            id="email"
-            name="email"
-            error="Correo electrónico incorrecto"
-            regex={regularExpressions.email}
-          />
-          <Input
-            state={password}
-            changeState={setPassword}
-            label="Contraseña"
-            type="password"
-            id="password"
-            name="password"
-            error="La contraseña debe tener entre 7 y 25 caracteres"
-            regex={regularExpressions.password}
-          />
-          <Input
-            state={password2}
-            changeState={setPassword2}
-            label="Confirmar contraseña"
-            type="password"
-            id="password2"
-            name="password2"
-            error="Las contraseñas deben ser iguales"
-            // regex={regularExpressions.password}
-            executeFunction={validateRepeatPassword}
-          />
-          {isFormValid === false && (
-            <p className={style.msgErrorInvalidForm}>
-              {msgError
-                ? msgError
-                : 'Por favor vuelva a intentarlo, algunos de los datos ingresados no son correctos.'}
+            <Input
+              state={email}
+              changeState={setEmail}
+              label="Correo electrónico"
+              type="email"
+              id="email"
+              name="email"
+              error="Correo electrónico incorrecto"
+              regex={regularExpressions.email}
+            />
+            <Input
+              state={password}
+              changeState={setPassword}
+              label="Contraseña"
+              type="password"
+              id="password"
+              name="password"
+              error="La contraseña debe tener entre 7 y 25 caracteres"
+              regex={regularExpressions.password}
+            />
+            <Input
+              state={password2}
+              changeState={setPassword2}
+              label="Confirmar contraseña"
+              type="password"
+              id="password2"
+              name="password2"
+              error="Las contraseñas deben ser iguales"
+              // regex={regularExpressions.password}
+              executeFunction={validateRepeatPassword}
+            />
+            {isFormValid === false && (
+              <p className={style.msgErrorInvalidForm}>
+                {msgError
+                  ? msgError
+                  : 'Por favor vuelva a intentarlo, algunos de los datos ingresados no son correctos.'}
+              </p>
+            )}
+            <button type="submit" className={`btn btn2 ${style.submitButton}`}>
+              Crear cuenta
+            </button>
+            <p className={style.linkContainer}>
+              ¿Ya tienes una cuenta?{' '}
+              <Link className={style.linkAction} to="/login">
+                Iniciar sesión
+              </Link>
             </p>
-          )}
-          <button type="submit" className={`btn btn2 ${style.submitButton}`}>
-            Crear cuenta
-          </button>
-          <p className={style.linkContainer}>
-            ¿Ya tienes una cuenta?{' '}
-            <Link className={style.linkAction} to="/login">
-              Iniciar sesión
-            </Link>
-          </p>
-        </div>
-      </form>
+          </div>
+        </form>
+      )}
     </div>
   );
 };
