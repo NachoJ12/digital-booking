@@ -10,6 +10,8 @@ import SelectCategory from '../Forms/Select/SelectCategory';
 import style from './CreateProduct.module.css';
 import baseUrl from '../../utils/baseUrl.json';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 const CreateProduct = () => {
   /* Estados de arrays base de datos */
@@ -28,6 +30,9 @@ const CreateProduct = () => {
   const [sitePolicy, setSitePolicy] = useState(null);
   const [healthAndSafetyPolicy, setHealtAndSafetyPolicy] = useState(null);
   const [cancellationPolicy, setCancellationPolicy] = useState(null);
+  const [msgErrorImages, setMsgErrorImages] = useState(false);
+
+  //console.log(arrayImages);
 
   /* Nuevo producto creado */
   // const [newProductId, setNewProductId] = useState(null);
@@ -49,6 +54,10 @@ const CreateProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (arrayImages.length < 5) {
+      setMsgErrorImages(true);
+      return;
+    }
     createNewAttribute();
     //console.log('Ejecución del submit');
 
@@ -344,6 +353,14 @@ const CreateProduct = () => {
         <section className={style.containerImages}>
           <h2>Cargar imágenes</h2>
           <AddImages getImages={getImages} />
+          {msgErrorImages && (
+            <div className={style.msgImageNewProductError}>
+              <div>
+                <FontAwesomeIcon icon={faCircleExclamation} />
+              </div>
+              <p>Debe ingresar como mínimo 5 (cinco) imágenes</p>
+            </div>
+          )}
         </section>
         <button className={`btn btn2 ${style.btnSubmit}`}>Crear</button>
       </form>

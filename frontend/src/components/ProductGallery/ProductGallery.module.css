@@ -95,6 +95,7 @@
   .imagesDesktopContainer {
     /* grid-template-rows: 638px; */
     grid-template-rows: 570px;
+    width: 100%;
   }
 
   /* .galleryContainer {

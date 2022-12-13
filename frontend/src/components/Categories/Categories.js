@@ -3,9 +3,11 @@ import style from './Categories.module.css';
 import baseUrl from '../../utils/baseUrl.json';
 import CategorieSkeleton from '../Skeletons/CategorieSkeleton/CategorieSkeleton';
 
-const Categories = () => {
+const Categories = ({ handleFilterCategories }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  //console.log(categories);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,7 +34,11 @@ const Categories = () => {
         ) : (
           <>
             {categories.slice(0, 4).map((category) => (
-              <div className={style.categoryCard} key={category.id}>
+              <div
+                className={style.categoryCard}
+                key={category.id}
+                onClick={() => handleFilterCategories(category.id)}
+              >
                 <img
                   className={style.categoryImage}
                   src={category.url}

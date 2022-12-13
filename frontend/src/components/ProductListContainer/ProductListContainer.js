@@ -3,7 +3,11 @@ import ProductList from '../ProductList/ProductList';
 import style from './ProductListContainer.module.css';
 import baseUrl from '../../utils/baseUrl.json';
 
-const ProductListContainer = ({ searchCity, searchRangeDates }) => {
+const ProductListContainer = ({
+  searchCity,
+  searchRangeDates,
+  filterCategories,
+}) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,8 +21,12 @@ const ProductListContainer = ({ searchCity, searchRangeDates }) => {
 
   //console.log('Search', startDate, endDate);
 
+  /* Faltaria arreglar el tema de los filtros para que se puedan reestablecer. También arreglar que si se selecciona una fecha o ciudad ya no funciona el filtro de categoria (no hay desde el back un filtro que acepte las 3 cosas) */
+
   const url =
-    searchCity && startDate && endDate
+    filterCategories && !(searchCity || (startDate && endDate))
+      ? `${baseUrl.url}/products/category/${filterCategories}`
+      : searchCity && startDate && endDate
       ? `${baseUrl.url}/products/cityAndDates/${searchCity.id}/${startDate}/${endDate}`
       : searchCity && !(startDate && endDate)
       ? `${baseUrl.url}/products/city/${searchCity.id}`
@@ -35,9 +43,12 @@ const ProductListContainer = ({ searchCity, searchRangeDates }) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        if (url.includes('/city')) {
-          throw new Error('No hay productos disponibles en esa ciudad');
-        }
+        // if (url.includes('/city')) {
+        //   setProducts([]);
+        //   throw new Error('No hay productos disponibles en esa ciudad');
+        // }
+        setProducts([]);
+        setIsLoading(false);
         console.log(err);
       });
   }, [url]);

@@ -151,6 +151,25 @@
   font-weight: 400;
 } */
 
+.msgImageNewProductError {
+  align-self: center;
+  background-color: rgb(255 0 0 / 10%);
+  color: #b00020;
+  font-size: 14px;
+  padding: 24px 16px 23px 19px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  /* width: 300px; */
+  max-width: 100%;
+}
+
+.msgImageNewProductError svg {
+  width: 31px;
+  height: 31px;
+  margin-right: 14px;
+}
+
 @media (min-width: 768px) {
   .container {
     padding: 0 30px 60px;
