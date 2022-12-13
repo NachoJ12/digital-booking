@@ -6,6 +6,7 @@ import { userContext } from '../../../context/UserContext';
 import baseUrl from '../../../utils/baseUrl.json';
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Spinner from '../../Spinner/Spinner';
 
 const Login = () => {
   const [email, setEmail] = useState({ value: '', valid: null });
@@ -13,6 +14,7 @@ const Login = () => {
   const [isFormValid, setIsFormValid] = useState(null);
   const [msgError, setMsgError] = useState('');
   const [isRedirect, setIsRedirect] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { userInfo, loginUser, logoutUser } = useContext(userContext);
 
@@ -50,6 +52,7 @@ const Login = () => {
         email: email.value,
         password: password.value,
       };
+      setIsLoading(true);
       fetch(`${baseUrl.url}/authenticate`, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -59,10 +62,12 @@ const Login = () => {
       })
         .then((res) => res.json())
         .then((data) => {
+          setIsLoading(false);
           loginUser({ ...data, redirect: false });
           navigate('/');
         })
         .catch((err) => {
+          setIsLoading(false);
           setIsFormValid(false);
           setMsgError(
             'Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde'
@@ -81,48 +86,52 @@ const Login = () => {
           <p>Para realizar una reserva necesitas estar logueado</p>
         </div>
       )}
-      <form className={style.form} onSubmit={handleSubmit}>
-        <h1 className={style.titleForm}>Iniciar Sesión</h1>
-        <div>
-          <Input
-            state={email}
-            changeState={setEmail}
-            label="Correo electrónico"
-            type="email"
-            id="email"
-            name="email"
-            error="Ingrese un correo electronico valido"
-            regex={regularExpressions.email}
-          />
-          <Input
-            state={password}
-            changeState={setPassword}
-            label="Contraseña"
-            type="password"
-            id="password"
-            name="password"
-            error="La contraseña debe tener entre 7 y 25 caracteres"
-            regex={regularExpressions.password}
-          />
-          {isFormValid === false && (
-            <p className={style.msgErrorInvalidForm}>
-              {msgError
-                ? msgError
-                : 'Por favor vuelva a intentarlo, sus credenciales son inválidas.'}
-            </p>
-          )}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <form className={style.form} onSubmit={handleSubmit}>
+          <h1 className={style.titleForm}>Iniciar Sesión</h1>
+          <div>
+            <Input
+              state={email}
+              changeState={setEmail}
+              label="Correo electrónico"
+              type="email"
+              id="email"
+              name="email"
+              error="Ingrese un correo electronico valido"
+              regex={regularExpressions.email}
+            />
+            <Input
+              state={password}
+              changeState={setPassword}
+              label="Contraseña"
+              type="password"
+              id="password"
+              name="password"
+              error="La contraseña debe tener entre 7 y 25 caracteres"
+              regex={regularExpressions.password}
+            />
+            {isFormValid === false && (
+              <p className={style.msgErrorInvalidForm}>
+                {msgError
+                  ? msgError
+                  : 'Por favor vuelva a intentarlo, sus credenciales son inválidas.'}
+              </p>
+            )}
 
-          <button type="submit" className={`btn btn2 ${style.submitButton}`}>
-            Ingresar
-          </button>
-          <p className={style.linkContainer}>
-            ¿Aún no tenés cuenta?{' '}
-            <Link className={style.linkAction} to="/signup">
-              Registrate
-            </Link>
-          </p>
-        </div>
-      </form>
+            <button type="submit" className={`btn btn2 ${style.submitButton}`}>
+              Ingresar
+            </button>
+            <p className={style.linkContainer}>
+              ¿Aún no tenés cuenta?{' '}
+              <Link className={style.linkAction} to="/signup">
+                Registrate
+              </Link>
+            </p>
+          </div>
+        </form>
+      )}
     </div>
   );
 };

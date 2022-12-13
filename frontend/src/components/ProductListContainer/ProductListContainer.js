@@ -5,6 +5,7 @@ import baseUrl from '../../utils/baseUrl.json';
 
 const ProductListContainer = ({ searchCity, searchRangeDates }) => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const startDate =
     searchRangeDates[0] &&
@@ -26,10 +27,12 @@ const ProductListContainer = ({ searchCity, searchRangeDates }) => {
       : `${baseUrl.url}/products`;
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
+        setIsLoading(false);
       })
       .catch((err) => {
         if (url.includes('/city')) {
@@ -41,7 +44,7 @@ const ProductListContainer = ({ searchCity, searchRangeDates }) => {
 
   return (
     <div className={style.container}>
-      <ProductList products={products} />
+      <ProductList products={products} isLoading={isLoading} />
     </div>
   );
 };
