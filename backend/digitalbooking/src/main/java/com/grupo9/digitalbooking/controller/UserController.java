@@ -6,6 +6,7 @@ import com.grupo9.digitalbooking.model.dto.UserDto;
 import com.grupo9.digitalbooking.response.ApiResponseHandler;
 import com.grupo9.digitalbooking.services.UserService;
 import com.grupo9.digitalbooking.services.impl.UserServiceImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Users")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")

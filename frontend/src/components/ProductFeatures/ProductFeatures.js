@@ -4,7 +4,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import style from './ProductFeatures.module.css';
 
 const ProductFeatures = ({ attributes }) => {
-  console.log('attributes', attributes);
+  //console.log('attributes', attributes);
   return (
     <section className={style.featureListContainer}>
       <h2>¿Que ofrece este lugar?</h2>

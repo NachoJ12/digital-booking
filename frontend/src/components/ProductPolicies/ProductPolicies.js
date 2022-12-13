@@ -10,7 +10,7 @@ const ProductPolicies = ({ policies }) => {
         <div className={style.policie}>
           <h3>Normas del establecimiento</h3>
           <ul>
-            {policies?.policiesSite.split('. ' || '\n').map((policie, i) => (
+            {policies?.policiesSite?.split('. ' || '\n').map((policie, i) => (
               <li key={i}>{policie}</li>
             ))}
           </ul>
@@ -19,7 +19,7 @@ const ProductPolicies = ({ policies }) => {
           <h3>Salud y seguridad</h3>
           <ul>
             {policies?.policiesSecurityAndHealth
-              .split('. ' || '\n')
+              ?.split('. ' || '\n')
               .map((policie, i) => (
                 <li key={i}>{policie}</li>
               ))}
@@ -29,7 +29,7 @@ const ProductPolicies = ({ policies }) => {
           <h3>Política de cancelación</h3>
           <ul>
             {policies?.policiesCancellation
-              .split('. ' || '\n')
+              ?.split('. ' || '\n')
               .map((policie, i) => (
                 <li key={i}>{policie}</li>
               ))}

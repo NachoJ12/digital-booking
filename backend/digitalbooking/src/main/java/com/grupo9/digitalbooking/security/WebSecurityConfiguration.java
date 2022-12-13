@@ -54,16 +54,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeRequests()
-                .antMatchers("/authenticate", "/products", "/products/**", "/cities", "/cities/**", "/categories").permitAll()
+                .antMatchers( "/v2/api-docs", "/swagger-ui/**",
+                        "/swagger-resources/**").permitAll()
+                .antMatchers("/authenticate").permitAll()
                 .antMatchers("/users/create").permitAll()
-                //.antMatchers("/attributes/**").permitAll() /* PROVISORIO PARA PRUEBAS */
-                //.antMatchers("/images/**").permitAll() /* PROVISORIO PARA PRUEBAS */
-                //.antMatchers("/reservations/**").permitAll() /* PROVISORIO PARA PRUEBAS */
-                .antMatchers("/reservations/**").hasAuthority("USER") /* Funciona */
+                /* USER */
+                .antMatchers("/reservations/create").hasAuthority("USER")
+                /* ADMIN */
+                .antMatchers("/cities/create", "/cities/update", "/cities/delete/{id}").hasAuthority("ADMIN")
+                .antMatchers("/products/create", "/products/update", "/products/delete/{id}").hasAuthority("ADMIN")
                 .antMatchers("/attributes/**").hasAuthority("ADMIN")
                 .antMatchers("/images/**").hasAuthority("ADMIN")
+                //.antMatchers("/products/**", "/cities/**", "/categories").permitAll()
 
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
+                //.anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }

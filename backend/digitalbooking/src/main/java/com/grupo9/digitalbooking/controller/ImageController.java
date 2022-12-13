@@ -3,6 +3,7 @@ package com.grupo9.digitalbooking.controller;
 import com.grupo9.digitalbooking.model.Image;
 import com.grupo9.digitalbooking.model.ProductAttribute;
 import com.grupo9.digitalbooking.services.ImageService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Images")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/images")

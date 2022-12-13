@@ -3,6 +3,7 @@ package com.grupo9.digitalbooking.controller;
 
 import com.grupo9.digitalbooking.model.Category;
 import com.grupo9.digitalbooking.services.CategoryService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Categories")
 @CrossOrigin (origins = "*")
 @RestController
 @RequestMapping("/categories")

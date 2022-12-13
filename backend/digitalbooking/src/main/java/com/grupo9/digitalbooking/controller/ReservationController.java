@@ -6,6 +6,7 @@ import com.grupo9.digitalbooking.model.User;
 import com.grupo9.digitalbooking.repository.UserRepository;
 import com.grupo9.digitalbooking.services.ProductService;
 import com.grupo9.digitalbooking.services.ReservationService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Reservations")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/reservations")
