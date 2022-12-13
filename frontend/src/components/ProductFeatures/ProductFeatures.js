@@ -10,7 +10,7 @@ const ProductFeatures = ({ attributes }) => {
       <h2>¿Que ofrece este lugar?</h2>
       <hr className={style.line} />
       <div className={style.featureList}>
-        {attributes?.map((attribute) => (
+        {attributes?.slice(0, 8).map((attribute) => (
           <div className={style.feature} key={attribute.id}>
             <FontAwesomeIcon icon={fas[attribute?.icon]} />
             <p>{attribute.name}</p>

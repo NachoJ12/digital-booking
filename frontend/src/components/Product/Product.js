@@ -3,19 +3,41 @@ import { Link } from 'react-router-dom';
 import style from './Product.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  fas,
   faStar,
   faHeart,
   faLocationDot,
-  faPersonSwimming,
-  faWifi,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 
-const Product = ({ id, imgUrl, category, title, description, location }) => {
+const Product = ({
+  id,
+  imgUrl,
+  category,
+  title,
+  description,
+  location,
+  attributes,
+  averageScore,
+}) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   const handleAddFavorite = () => {
     isFavorite ? setIsFavorite(false) : setIsFavorite(true);
+  };
+
+  const textScore = (rating) => {
+    let text =
+      rating >= 0 && rating <= 2.5
+        ? 'Muy Malo'
+        : rating >= 2.6 && rating <= 5
+        ? 'Malo'
+        : rating >= 5.1 && rating <= 6.5
+        ? 'Regular'
+        : rating >= 6.6 && rating <= 8
+        ? 'Bueno'
+        : 'Muy bueno';
+    return text;
   };
 
   return (
@@ -37,10 +59,12 @@ const Product = ({ id, imgUrl, category, title, description, location }) => {
             </div>
             <h5 className={style.productTitle}>{title}</h5>
           </div>
-
+          {/* Score */}
           <div className={style.productScore}>
-            <span className={style.scoreNumber}>8</span>
-            <p className={style.scoreText}>Muy bueno</p>
+            <span className={style.scoreNumber}>
+              {averageScore ? averageScore : 1}
+            </span>
+            <p className={style.scoreText}>{textScore(averageScore)}</p>
           </div>
         </div>
 
@@ -51,9 +75,11 @@ const Product = ({ id, imgUrl, category, title, description, location }) => {
               Mostrar en el mapa
             </Link>{' '}
           </p>
+          {/* attributes */}
           <div className={style.propertyHighlights}>
-            <FontAwesomeIcon icon={faPersonSwimming} />
-            <FontAwesomeIcon icon={faWifi} />
+            {attributes?.map((attribute) => (
+              <FontAwesomeIcon icon={fas[attribute?.icon]} key={attribute.id} />
+            ))}
           </div>
         </div>
 

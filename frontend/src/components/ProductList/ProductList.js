@@ -4,7 +4,7 @@ import Spinner from '../Spinner/Spinner';
 import style from './ProductList.module.css';
 
 const ProductList = ({ products, isLoading }) => {
-  console.log(products);
+  //console.log(products);
   return (
     <div className={style.container}>
       <h2 className={style.recommendations}>Recomendaciones</h2>
