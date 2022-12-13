@@ -5,6 +5,7 @@ import com.grupo9.digitalbooking.model.dto.AuthenticationDtoRequest;
 import com.grupo9.digitalbooking.model.dto.AuthenticationDtoResponse;
 import com.grupo9.digitalbooking.security.jwt.JwtUtil;
 import com.grupo9.digitalbooking.services.impl.UserServiceImpl;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+@Api(tags="Authentication")
 @CrossOrigin("*")
 @RestController
 public class AuthenticationController {

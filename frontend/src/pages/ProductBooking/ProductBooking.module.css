@@ -11,6 +11,10 @@
   margin-bottom: 15px;
 }
 
+.reserveDateContainer > .react-datepicker {
+  border-radius: 5px;
+}
+
 @media (min-width: 768px) {
   .container section {
     padding: 12px 30px;
@@ -19,7 +23,7 @@
 
 @media (min-width: 1333px) {
   .container section {
-    padding: 18px 40px;
+    padding: 18px 20px;
   }
   .centerContainer {
     display: flex;

@@ -4,6 +4,7 @@ import com.grupo9.digitalbooking.exception.DuplicatedValueException;
 import com.grupo9.digitalbooking.model.City;
 import com.grupo9.digitalbooking.model.ProductAttribute;
 import com.grupo9.digitalbooking.services.ProductAttributeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Attributes")
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/attributes")

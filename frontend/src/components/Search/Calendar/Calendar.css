@@ -43,6 +43,7 @@
 .react-datepicker__day--disabled {
   cursor: default;
   color: #ccc;
+  user-select: none;
 }
 
 .react-datepicker__day--selected,
@@ -67,10 +68,17 @@
   background-color: var(--primary-color-hover);
 }
 
-.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+.react-datepicker__day--in-selecting-range:not(
+    .react-datepicker__day--in-range
+  ) {
   background-color: rgba(240, 87, 45, 0.5);
 }
 /* finish day box styles */
+
+/* Only booking calendar */
+.bookingCalendar .react-datepicker {
+  border-radius: 5px;
+}
 
 @media (min-width: 1333px) {
   .react-datepicker__day {

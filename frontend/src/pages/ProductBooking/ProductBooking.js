@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductHeader from '../../components/ProductHeader/ProductHeader';
 import ProductPolicies from '../../components/ProductPolicies/ProductPolicies';
 import BookingCheckIn from '../../components/BookingCheckIn/BookingCheckIn';
@@ -8,25 +8,27 @@ import Calendar from '../../components/Search/Calendar/Calendar';
 import style from './ProductBooking.module.css';
 import baseUrl from '../../utils/baseUrl.json';
 import { useParams } from 'react-router-dom';
-import { userContext } from '../../context/UserContext';
 
 const ProductBooking = () => {
+  const [product, setProduct] = useState([]);
   const [bookingDate, setBookingDate] = useState([]);
   const { id } = useParams();
+  const { policiesSite, policiesSecurityAndHealth, policiesCancellation } =
+    product;
   //const { userJwt } = useContext(userContext);
 
-  const url = `${baseUrl.url}/reservations/product/${id}`;
+  const [checkInTime, setCheckInTime] = useState(null);
 
-  /* useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setBookingDate(data));
-  }, [url]); */
-  //console.log(userJwt);
+  const url = `${baseUrl.url}/reservations/product/${id}`;
+  //console.log('checkinTime', checkInTime);
 
   //const token = JSON.parse(userJwt);
   //console.log('token', token);
   // console.log('userJwt', userJwt);
+
+  const getCheckInTime = (time) => {
+    setCheckInTime(time);
+  };
 
   useEffect(() => {
     const jwt = JSON.parse(localStorage.getItem('jwt'));
@@ -44,6 +46,13 @@ const ProductBooking = () => {
       .then((data) => setBookingDate(data))
       .catch((err) => console.log(err));
   }, [url]);
+
+  useEffect(() => {
+    fetch(`${baseUrl.url}/products/${id}`)
+      .then((res) => res.json())
+      .then((data) => setProduct(data.data))
+      .catch((err) => console.log(err));
+  }, [id]);
 
   // console.log(bookingDate);
 
@@ -66,16 +75,22 @@ const ProductBooking = () => {
           {/* Tu horario de llegada */}
           <section>
             <h2>Tu horario de llegada</h2>
-            <BookingCheckIn />
+            <BookingCheckIn getCheckInTime={getCheckInTime} />
           </section>
         </div>
 
         {/* Detalle de la reserva */}
         <section className={style.rightCenterContainer}>
-          <BookingDetail />
+          <BookingDetail checkInTime={checkInTime} />
         </section>
       </div>
-      <ProductPolicies />
+      <ProductPolicies
+        policies={{
+          policiesSite,
+          policiesSecurityAndHealth,
+          policiesCancellation,
+        }}
+      />
     </div>
   );
 };

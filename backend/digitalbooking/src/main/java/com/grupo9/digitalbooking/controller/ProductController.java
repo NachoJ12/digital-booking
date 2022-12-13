@@ -5,6 +5,8 @@ import com.grupo9.digitalbooking.model.City;
 import com.grupo9.digitalbooking.model.Product;
 import com.grupo9.digitalbooking.response.ApiResponseHandler;
 import com.grupo9.digitalbooking.services.ProductService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+@Api(tags="Products")
 @CrossOrigin (origins = "*")
 @RestController
 @RequestMapping("/products")
@@ -29,6 +32,7 @@ public class ProductController {
         return ResponseEntity.ok(prodctService.getAllProducts());
     }
 
+    @ApiOperation(value="Product by ID", notes="Product by ID")
     @GetMapping("/{id}")
     public ResponseEntity<Object> buscarProducto(@PathVariable Integer id)  {
         Optional<Product> productoBuscado = prodctService.getProductById(id);

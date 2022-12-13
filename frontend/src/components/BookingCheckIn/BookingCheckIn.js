@@ -4,11 +4,12 @@ import style from './BookingCheckIn.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
-const BookingCheckIn = () => {
+const BookingCheckIn = ({ getCheckInTime }) => {
   const [arrivalTime, setArrivalTime] = useState('--:--');
 
   const getArrivalTime = (time) => {
     setArrivalTime(time);
+    getCheckInTime(rangeInitialTime);
   };
 
   const addHoursToDate = (objDate, intHours) => {
@@ -22,12 +23,12 @@ const BookingCheckIn = () => {
   //   const formatTime = new Date(startTime).toTimeString().slice(0, 5);
   const rangeInitialTime = arrivalTime.slice(0, 5);
 
-  const rangeFinishTime = addHoursToDate(
-    new Date(2022, 0, 1, arrivalTime.slice(0, 2), 0, 0),
-    1
-  )
-    .toTimeString()
-    .slice(0, 5);
+  const rangeFinishTime =
+    arrivalTime !== '--:--'
+      ? addHoursToDate(new Date(2022, 0, 1, arrivalTime.slice(0, 2), 0, 0), 1)
+          .toTimeString()
+          .slice(0, 5)
+      : '--:--';
 
   return (
     <div className={style.checkInContainer}>
