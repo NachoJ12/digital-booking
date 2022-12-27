@@ -1,0 +1,1235 @@
+{
+	"info": {
+		"_postman_id": "8919106b-8087-4705-8b75-6b8096057b5b",
+		"name": "PI_DigitalBooking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18554711"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Listar Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Categorias Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hostels\",\r\n    \"description\": \"807.105 hoteles\",\r\n    \"url\": \"https://149345965.v2.pressablecdn.com/wp-content/uploads/img-hotels-country-inn-hotel.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categories/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2,\r\n    \"title\": \"Prueba2\",\r\n    \"description\": \"prueba2\",\r\n    \"urlImage\": \"Prueba2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categories/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categories/delete/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categories",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Listar Productos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Producto por ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/category/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Productos por Ciudad",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/city/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"city",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos por Fecha",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/dates/2022-02-17/2024-02-25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"dates",
+								"2022-02-17",
+								"2024-02-25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Productos por Ciudad y Fecha",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/cityAndDates/4/2022-12-17/2024-02-25",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"cityAndDates",
+								"4",
+								"2022-12-17",
+								"2024-02-25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Producto por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/products/delete/25",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"products",
+								"delete",
+								"25"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Casa en La Plata\",\r\n    \"description\": \"Hermosa casa junto a la playa\",\r\n    \"short_description\": \"prueba\",\r\n    \"active\": false,\r\n    \"address\": \"Mar del plata 123\",\r\n    \"latitude\": \"-37.9702777\",\r\n    \"longitude\": \"-57.5955626\",\r\n    \"area\": \"150\",\r\n    \"average_score\": 5.0,\r\n    \"city\": {\r\n        \"id\": 3\r\n    },\r\n    \"category\": {\r\n        \"id\": 1\r\n    },\r\n    \"policiesSite\": \"Check-out: 10:00. No se permiten fiestas. No se permite fumar.\",\r\n    \"policiesSecurityAndHealth\":\"Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus. Detector de humo. Depósito de seguridad.\",\r\n    \"policiesCancellation\": \"Agregá las fechas de tu viaje para obtener los detallles de cancelación de esta estadía.\",\r\n    \"attributes\": [{\"id\":1},{\"id\":2}]\r\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Producto VIEJO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Casa en La Plata\",\r\n    \"description\": \"Hermosa casa junto a la playa\",\r\n    \"short_description\": \"prueba\",\r\n    \"active\": false,\r\n    \"address\": \"Mar del plata 123\",\r\n    \"latitude\": \"-37.9702777\",\r\n    \"longitude\": \"-57.5955626\",\r\n    \"area\": \"150\",\r\n    \"average_score\": 5.0,\r\n    \"city\": {\r\n        \"id\": 1,\r\n        \"country\": {\"id\":1}\r\n    },\r\n    \"category\": {\r\n        \"id\": 1,\r\n        \"name\": \"Casas\",\r\n        \"description\": \"Casas en alquiler\",\r\n        \"url\": \"https://149345965.v2.pressablecdn.com/wp-content/uploads/img-hotels-country-inn-hotel.jpg\"\r\n    }\r\n}  ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cities",
+			"item": [
+				{
+					"name": "Listar ciudades",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cities/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ciudad por ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cities/10",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cities",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ciudad por ID Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/cities/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cities",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear ciudad",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 15,\r\n        \"name\": \"Chapelicue\",\r\n        \"country\": {\r\n            \"id\": 3\r\n            }\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cities/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cities",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Listar imagenes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/images",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"images"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Imagen por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/images/54",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"images",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Imagen por ID Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"title\":\"Image Test\",\r\n    \"url\": \"https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-1366.jpg\"\r\n }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/images/create/17",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"images",
+								"create",
+								"17"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Imagen por ID Producto",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n     \"id\":52,\r\n     \"title\":\"Image Test222\",\r\n \"url\": \"https://0521ptc2n2-grupo9-airc2cs3.s3.us-east-2.amazonaws.com/airc2cimgs/casas/1/casa1-01-1366.jpg\",\r\n \"product\": {\"id\":1}\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/images/update/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"images",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Imagen por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/images/delete/53",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"images",
+								"delete",
+								"53"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attributes",
+			"item": [
+				{
+					"name": "Listar Atributos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attributes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attributes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atributo por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attributes/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attributes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Atributo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Aire acondicionado\",\r\n    \"icon\":\"faSnowflake\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/attributes/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attributes",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Atributo por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attributes/delete/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attributes",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Atributo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":3,\r\n\"name\":\"Pileta climatizada\",\r\n\"icon\":\"faSwimmer\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/attributes/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attributes",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Listar Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Usuario por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/7",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Martha\",\r\n    \"lastName\": \"De La Ossa\",\r\n    \"email\": \"martha555@gmail.com\",\r\n    \"password\": \"123456789\",\r\n    \"enabled\": true,\r\n    \"city\": {\r\n        \"id\": 7    \r\n    },\r\n    \"role\":{\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Usuario por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/delete/20",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"delete",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modificar Usuario por ID(body)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJyb2JlcmcyMUBnbWFpbC5jb20iLCJleHAiOjE2Njg5ODIyNzMsImlhdCI6MTY2ODk3NjI3M30.kKJwsVmc1jEnzE_MPcepGeZXk8rQopJRS4h5PDQed5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {  \r\n    \"id\": 14,\r\n    \"name\": \"Roberto\",\r\n    \"lastName\": \"Gonzales\",\r\n    \"email\": \"roberg17@gmail.com\",\r\n    \"password\": \"1234567\",\r\n    \"enabled\": true,\r\n    \"city\": {\r\n        \"id\": 5,\r\n        \"name\": \"Chipre\"\r\n    }\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/users/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Roles",
+			"item": [
+				{
+					"name": "Listar Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/roles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Rol por ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/roles/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Rol por ID Copy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"name\": \"MODERATOR\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/roles/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"roles",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Rol por ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/roles/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"roles",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Auth",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"martha555@gmail.com\",\r\n    \"password\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Prueba",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJuYWNob0BkaC5jb20iLCJleHAiOjE2Njg5MDQ0ODMsImlhdCI6MTY2ODg5ODQ4M30.Ng3AFaQIHu5cBKL6fs1lrCNfJKfu3_PzsQg67o3aExs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/airc2c",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airc2c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth2 admin",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"nacho@dh.com\",\r\n    \"password\": \"adminc2c\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/authenticate",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "Listar reservas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reservations",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Reserva",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"arrival_time\": \"10:30:00\", \r\n    \"check_in_date\": \"2025-02-17\", \r\n    \"checkout_date\": \"2025-02-24\",\r\n    \"comments\": \"llevo mi mascota\", \r\n    \"product\": {\"id\":8}, \r\n    \"user\": {\"id\":1}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reservations/create",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservations",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Reserva por ID de Producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reservations/product/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservations",
+								"product",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Reserva por ID de User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reservations/user/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservations",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
